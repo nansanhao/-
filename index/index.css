@@ -62,11 +62,18 @@ body{
     align-items: center;
 }
 /* ----------------------- carousel ---------------------- */
+.carousel-wrap{
+    display: flex;
+    justify-content: center;
+}
 .carousel{
-    
+    width: 1460px;
+
+
 }
 .carousel-img{
-    
+    width: 730px;
+    height: 336px;
 }
 /* ----------------------- hot-playlist ---------------------- */
 .hot-playlist-content{
@@ -74,8 +81,9 @@ body{
     flex-wrap: wrap;
 }
 .playlist-item{
-    width: 180px;
-    height: 200px;
+    width: 160px;
+
+    margin: 0 10px 0 10px;
 }
 .item-time{
     font-size: 13px;
@@ -92,4 +100,10 @@ body{
 .btn-list{
     display: flex;
     justify-content: flex-end;
+}
+.item-title{
+    padding:5px 0;
+}
+.btn-list{
+    padding:5px 0 0 0 ;
 }
