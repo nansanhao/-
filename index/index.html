@@ -32,6 +32,16 @@
                     <el-menu-item index="4" class="nav-item" disabled>商城</el-menu-item>
                     <el-menu-item index="5" class="nav-item" disabled>音乐人 </el-menu-item>
                     <el-menu-item index="6" class="nav-item" disabled>下载客户端</el-menu-item>
+                    <el-input class="search"
+                              placeholder="搜索"
+                              prefix-icon="el-icon-search"
+                              v-model="input2"size="medium">
+                    </el-input>
+                    <div class="log">
+                        <a href="#" >登录</a>
+                        <a href="#" >注册</a>
+                    </div>
+
                 </div>
 
             </el-menu>
@@ -49,18 +59,18 @@
         <!--<div class="tab" >-->
             <!--<div class="tab-item" v-for="item in tab_list">{{item}}</div>-->
         <!--</div>-->
-        <div class="main">
-            <div class="section">
+        <div class="main-wrap">
+            <div class="main">
                 <div class="hot-playlist">
-                    <div class="hot-playlist-title">
-                        <h2>热门歌单</h2>
+                    <div class="hot-title">
+                        <h2><i class="el-icon-caret-right"></i> 热门歌单</h2>
                     </div>
-                    <div class="hot-playlist-content">
+                    <div class="hot-content">
                         <div class="playlist-item" v-for="item in hot_playlist">
                             <el-card body-style="padding:8px">
                                 <img v-bind:src="item.img_url" class="playlist-item-img">
                                 <div>
-                                    <div class="item-title">{{item.title}}</div>
+                                    <div class="item-title">{{fomatString(item.title,17)}}</div>
                                     <div>
                                         <div class="item-time">{{item.create_date}}</div>
                                         <!--<div class="btn-list">-->
@@ -74,8 +84,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="hot-album">
+                    <div class="hot-title">
+                        <h2><i class="el-icon-caret-right"></i> 热门专辑</h2>
+                    </div>
+                    <div class="hot-content">
+                        <div class="albumlist-item" v-for="item in hot_albumlist">
+                            <el-card body-style="padding:8px;background-color:#f5f5f5">
+                                <img v-bind:src="item.img_url" class="albumlist-item-img">
+                                <img class="album-after-img" src="../img/album.png" alt="">
+                                <div albumlist-item-info>
+                                    <div class="item-title">{{fomatString(item.title,10)}}</div>
+                                    <div class="item-singer">{{fomatString(item.singer,10)}}</div>
+                                </div>
+                            </el-card>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="aside"></div>
+            <div class="aside">
+                <div class="hot-singer">
+                    <h4><i class="el-icon-arrow-right"></i>歌手排行榜</h4>
+                    <div class="hot-singer-content">
+                        gasdfdfasd
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
