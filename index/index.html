@@ -90,7 +90,7 @@
                     </div>
                     <div class="hot-content">
                         <div class="albumlist-item" v-for="item in hot_albumlist">
-                            <el-card body-style="padding:8px;background-color:#f5f5f5">
+                            <el-card body-style="padding:8px;">
                                 <img v-bind:src="item.img_url" class="albumlist-item-img">
                                 <img class="album-after-img" src="../img/album.png" alt="">
                                 <div albumlist-item-info>
@@ -106,13 +106,40 @@
                 <div class="hot-singer">
                     <h4><i class="el-icon-arrow-right"></i>歌手排行榜</h4>
                     <div class="hot-singer-content">
-                        gasdfdfasd
+                        <div class="singer-item" v-for="singer in hot_singer">
+                            <div class="singer-img">
+                                <img v-bind:src="singer.image_url" style="width: 62px;height: 62px;" alt="">
+                            </div>
+                            <div class="singer-info-wrap">
+                                <div class="singer-name">{{singer.name}}</div>
+                                <div class="singer-info">{{fomatString(singer.info,16)}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="hot-singer">
+                    <h4><i class="el-icon-arrow-right"></i>歌手排行榜</h4>
+                    <div class="hot-singer-content">
+                        <div class="singer-item" v-for="singer in hot_singer">
+                            <div class="singer-img">
+                                <img v-bind:src="singer.image_url" style="width: 62px;height: 62px;" alt="">
+                            </div>
+                            <div class="singer-info-wrap">
+                                <div class="singer-name">{{singer.name}}</div>
+                                <div class="singer-info">{{fomatString(singer.info,16)}}</div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
-
+        <div class="footer">
+            <div class="footer-link"> 加入我们 | 支持我们 | 客户服务 | 服务条款 | 网站导航 |意见反馈 </div>
+            <div>©2018 带音乐平台</div>
+        </div>
     </div>
     
 
