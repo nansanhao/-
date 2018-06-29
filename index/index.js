@@ -1,15 +1,26 @@
+import nav from '../components/nav.vue'
+
 new Vue({
     el: '#app',
+    components: {
+        'nav-bar': nav
+    },
     data: {
-        tab_active_index:1,
-        tab_list:[
-            "推荐",
-            "排行榜",
-            "歌单",
-            "主播电台",
-            "歌手",
-            "新碟上架"
-        ],
+        // form
+        loginFormVisible: false,
+        formLabelWidth: '40px',
+        login_form: {
+            account: '',
+            password: '',
+        },
+        registerFormVisible: false,
+        register_form:{
+            account:"",
+            password:"",
+            password_repeat:"",
+            verification_code:""
+        },
+        // nav
         menu_active_index: '1',
         carousel_items: [
             {

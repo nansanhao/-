@@ -211,3 +211,56 @@ body{
     margin: 20px 0 10px 0;
 
 }
+/* ----------------------- login ---------------------- */
+.el-dialog__header{
+
+}
+.el-dialog__body{
+    border-top:1px solid #c20c0c;
+    padding: 30px 0 0 0;
+    margin: 0 20px;
+}
+.login-button,.register-button{
+    background-color: #bc070c;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.login-button{
+    width: 280px;
+}
+.register-button{
+    width: 320px;
+}
+.to-register,.to-login{
+    color: #c20c0c;
+    text-decoration: none;
+
+}
+.to-register:hover,.to-login:hover{
+    text-decoration: underline;
+}
+.dialog-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-button:hover,.register-button:hover{
+    background-color: #ec2a32;
+    border: none;
+}
+.el-form-item__content input:focus{
+    border-color: #c20c0c;
+}
+.forget-password,.verification-code{
+    align-self:flex-end ;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.forget-password>a,.verification-code>a{
+    color: #c20c0c;
+    text-decoration: none;
+}
+.forget-password:hover,.verification-code:hover{
+    text-decoration: underline;
+}
