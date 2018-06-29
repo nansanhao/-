@@ -16,20 +16,86 @@
     <div id="app">
         <div class="main-wrap">
             <div class="main">
-                <el-card body-style="padding:8px" >
-                    <img v-bind:src="Playlist.img_url" class="playlist-item-img">
-                    <div>
-                        <div class="item-title">{{Playlist.name}}</div>
-                        <div>
-                            <div class="item-time">{{Playlist.creat_name}}</div>
-                            <!--<div class="btn-list">-->
-                            <!--<el-button size="small" icon="el-icon-caret-right" circle></el-button>-->
-                            <!--<el-button size="small" icon="el-icon-star-off" circle></el-button>-->
-                            <!--</div>-->
-
+                <div class="section">
+                    <el-card body-style="padding:6px" class="playlist-img-wrap">
+                        <img v-bind:src="playlist.img_url" class="playlist-img">
+                    </el-card>
+                    <div class="playlist-content">
+                        <div class="playlist-title">
+                            <img src="../img/albumTag.png" style="width: 64px;height: 26px;" alt="">
+                            <div>{{playlist.title}} </div>
+                        </div>
+                        <div class="playlist-author">
+                            <img v-bind:src="playlist.author.img_url" alt="" class="playlist-author-img">
+                            <div class="playlist-author-name">
+                                {{playlist.author.name}}
+                                <i style="color: #eb7504;font-weight: bold;" class="el-icon-star-off"></i>
+                            </div>
+                            <div class="playlist-time">{{playlist.create_date}} 创建</div>
+                        </div>
+                        <div class="playlist-btn-wrap">
+                            <el-button type="primary" round icon="el-icon-caret-right">播放</el-button>
+                            <el-button  round icon="el-icon-service">{{playlist.play_count}}</el-button>
+                            <el-button  round icon="el-icon-star-off">{{playlist.collect_count}}</el-button>
+                            <el-button  round icon="el-icon-download">{{playlist.download_count}}</el-button>
+                        </div>
+                        <div class="playlist-tag">
+                            <div class="playlist-tag-title">
+                                标签：
+                            </div>
+                            <a href="" class="playlist-tag-item" v-for="tag in playlist.tags">
+                                {{tag}}
+                            </a>
+                        </div>
+                        <div class="playlist-info">
+                            <div class="playlist-info-title">
+                                介绍：
+                            </div>
+                            <pre-wrap class="playlist-info-content">
+                                {{playlist.introduction}}
+                            </pre-wrap>
                         </div>
                     </div>
-                </el-card>
+                </div>
+                <div class="songs">
+                    <div class="songs-title">
+                        <h3>
+                            <i class="el-icon-caret-right"></i> 
+                            歌曲列表
+                            <span style="font-size: 12px;color: #666;font-weight: normal;margin-left: 20px">
+                                {{playlist.songs.length}}首歌
+                            </span>
+                        </h3>
+                    </div>
+                    <el-table
+                            :data="playlist.songs"
+                            stripe
+                            style="width: 100%">
+                        <el-table-column
+                                prop="title"
+                                label="歌曲名"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="duration"
+                                label="时长"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="album"
+                                label="专辑"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="singer"
+                                label="歌手">
+                        </el-table-column>
+                    </el-table>
+
+
+
+                </div>
+
             </div>
             <div class="aside">
 

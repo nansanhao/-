@@ -7,6 +7,9 @@ body{
 }
 .main{
     width: 730px;
+    border: 1px solid #d3d3d3;
+    border-top: none;
+    padding: 30px 20px;
 
 }
 .aside{
@@ -17,3 +20,79 @@ body{
     display: flex;
     justify-content: center;
 }
+.section{
+    display: flex;
+}
+/* ----------------------- playlist ---------------------- */
+
+.playlist-time{
+    font-size: 13px;
+    color: #999;
+}
+.playlist-img-wrap{
+    width: 212px;
+    height: 212px;
+    display: inline-block;
+}
+.playlist-content{
+    display:inline-block;
+    align-self: flex-start;
+    flex: 1;
+    padding: 0 20px;
+}
+.playlist-img{
+    width: 200px;
+    height: 200px;
+}
+.playlist-title{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+
+}
+.playlist-author-img{
+    width: 40px;
+    height: 40px;
+}
+.playlist-author-name{
+    font-size: 13px;
+    padding: 0 40px 0 10px;
+}
+.playlist-author-name:hover{
+    text-decoration: underline;
+}
+.playlist-author{
+    display:flex;
+    align-items: center;
+    padding: 20px 0;
+}
+/* ----------------------- tag ---------------------- */
+.playlist-tag{
+    display:flex;
+    align-items: center;
+    padding: 20px 0;
+}
+.playlist-tag-item{
+    padding: 2px 10px;
+    border: 1px solid #d3d3d3;
+    font-size: 12px;
+    border-radius:13px;
+    background-color: #f3f3f3;
+    color:#777;
+    text-decoration: none;
+    margin: 0 2px;
+}
+.playlist-tag-item:hover{
+    background-color:white;
+}
+.playlist-tag-title,.playlist-info-title,.playlist-info-content{
+    font-size: 12px;
+    color: #666;
+}
+/* ----------------------- songs ---------------------- */
+.songs-title>h3{
+    border-bottom: 2px solid #c20c0c;
+    padding: 10px 0;
+    margin-right: 20px;
+}
+
