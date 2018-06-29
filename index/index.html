@@ -18,7 +18,6 @@
 
 <body>
     <div id="app">
-        <nav-bar></nav-bar>
         <div class="nav">
             <el-menu :default-active="menu_active_index" class="el-menu-demo" mode="horizontal" @select="" text-color="#ffffff"
                 background-color="#333" active-text-color="#ffffff">
@@ -43,6 +42,56 @@
                         <a href="#" @click="registerFormVisible = true">注册</a>
                     </div>
                 </div>
+                <!--login Form -->
+                <el-dialog title="登录" :visible.sync="loginFormVisible" width="320px" >
+                    <el-form :model="login_form">
+                        <el-form-item >
+                            <el-input placeholder="账号" v-model="login_form.account" auto-complete="off" suffix-icon="el-icon-error"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="密码" v-model="login_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <div class="forget-password">
+                            <a href="#">忘记密码？</a>
+                        </div>
+                        <el-button class="login-button" type="primary" @click="dialogFormVisible = false">登录</el-button>
+                        <div>
+                            <a href="" class="to-register">注册</a>
+                        </div>
+                    </div>
+                </el-dialog>
+                <!--register Form -->
+                <el-dialog title="注册" :visible.sync="registerFormVisible" width="360px" >
+                    <el-form :model="register_form">
+                        <el-form-item >
+                            <el-input placeholder="账号" v-model="register_form.account" auto-complete="off" suffix-icon="el-icon-error"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="密码" v-model="register_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="再输一次密码" v-model="register_form.password_repeat" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="验证码" v-model="register_form.verification_code" auto-complete="off" suffix-icon="el-icon-error"></el-input>
+                        </el-form-item>
+
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <div class="verification-code">
+                            <a href="#">发送验证码</a>
+                        </div>
+                        <el-button class="register-button" type="primary" @click="registerFormVisible = false">注册</el-button>
+                        <div>
+                            <a href="" class="to-login">登录</a>
+                        </div>
+                    </div>
+                </el-dialog>
 
             </el-menu>
         </div>
@@ -137,61 +186,6 @@
             <div class="footer-link"> 加入我们 | 支持我们 | 客户服务 | 服务条款 | 网站导航 |意见反馈 </div>
             <div>©2018 带音乐平台</div>
         </div>
-        <input type="text" placeholder="">
-        <!--login Form -->
-        <el-dialog title="登录" :visible.sync="loginFormVisible" width="320px" >
-            <el-form :model="login_form">
-                <el-form-item >
-                    <el-input placeholder="账号" v-model="login_form.account" auto-complete="off" suffix-icon="el-icon-error"></el-input>
-                </el-form-item>
-                <el-form-item >
-                    <el-input placeholder="密码" v-model="login_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
-"></el-input>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <div class="forget-password">
-                    <a href="#">忘记密码？</a>
-                </div>
-                <el-button class="login-button" type="primary" @click="dialogFormVisible = false">登录</el-button>
-                <div>
-                    <a href="" class="to-register">注册</a>
-                </div>
-            </div>
-        </el-dialog>
-        <!--register Form -->
-        <el-dialog title="注册" :visible.sync="registerFormVisible" width="360px" >
-            <el-form :model="register_form">
-                <el-form-item >
-                    <el-input placeholder="账号" v-model="register_form.account" auto-complete="off" suffix-icon="el-icon-error"></el-input>
-                </el-form-item>
-                <el-form-item >
-                    <el-input placeholder="密码" v-model="register_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
-"></el-input>
-                </el-form-item>
-                <el-form-item >
-                    <el-input placeholder="再输一次密码" v-model="register_form.password_repeat" type="password" auto-complete="off" suffix-icon="el-icon-success
-"></el-input>
-                </el-form-item>
-                <el-form-item >
-                    <el-input placeholder="验证码" v-model="register_form.verification_code" auto-complete="off" suffix-icon="el-icon-error"></el-input>
-                </el-form-item>
-
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <div class="verification-code">
-                    <a href="#">发送验证码</a>
-                </div>
-                <el-button class="register-button" type="primary" @click="registerFormVisible = false">注册</el-button>
-                <div>
-                    <a href="" class="to-login">登录</a>
-                </div>
-            </div>
-        </el-dialog>
-
-
-
-
     </div>
 
 
