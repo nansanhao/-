@@ -205,7 +205,21 @@
             </div>
 
             <div class="aside">
-
+                <div class="aside-fan">
+                    <div class="aside-title">
+                        <h4><i class="el-icon-arrow-right"></i>同样喜欢这张专辑的人</h4>
+                    </div>
+                    <div class="fans">
+                        <div class="fan-item" v-for="fan in fans">
+                            <img v-bind:src="fan.img_url" alt="" style="height: 40px;width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="aside-oha">
+                    <div class="aside-title">
+                        <h4><i class="el-icon-arrow-right"></i>Ta的其他热门专辑</h4>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer">

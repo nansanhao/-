@@ -137,6 +137,40 @@ new Vue({
                 likes:"3"
 
             }
+        ],
+        fans:[
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/wADOVhTcVqz5QE2mSXWsvw==/109951163156968576.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/cnOasuJeITjMXLdEpLlIYg==/109951163188627683.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/XRPbiATAJb22_eWGbvp90Q==/18735678139079848.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/g-RIpfoxBdN-JB7JQ6_fnw==/3394192412338121.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/wADOVhTcVqz5QE2mSXWsvw==/109951163156968576.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/cnOasuJeITjMXLdEpLlIYg==/109951163188627683.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/XRPbiATAJb22_eWGbvp90Q==/18735678139079848.jpg?param=40y40"
+            },
+            {
+                user_id:"",
+                img_url:"http://p1.music.126.net/g-RIpfoxBdN-JB7JQ6_fnw==/3394192412338121.jpg?param=40y40"
+            }
         ]
     }
 })

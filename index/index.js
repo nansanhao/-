@@ -23,7 +23,7 @@ new Vue({
                 link_url: ""
             },
             {
-                image_url: "http://p1.music.126.net/sQdU5PZeu7YYMU2nHj5L3A==/109951163379967707.jpg",
+                image_url: "http://p1.music.126.net/qOYGDNKsAkHMtvPCnXsnpQ==/109951163381419672.jpg",
                 link_url: ""
             },
             {
@@ -35,7 +35,7 @@ new Vue({
                 link_url: ""
             },
             {
-                image_url:"http://p1.music.126.net/Ez3UhanNxfXTlkPC59OfKg==/109951163378229383.jpg",
+                image_url:"http://p1.music.126.net/GOtYkordqsMIfkig0nrLVg==/109951163383038987.jpg",
                 link_url:""
             }
         ],

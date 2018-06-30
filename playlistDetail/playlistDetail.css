@@ -195,3 +195,19 @@ body{
     color: #666;
     text-indent: 24px;
 }
+/* ----------------------- aside ---------------------- */
+.aside-title{
+    border-bottom: 1px solid #c20c0c;
+}
+.aside-title>h4{
+    margin: 10px 0;
+}
+/*fan*/
+.fans{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0 80px 0 ;
+}
+.fan-item{
+    padding: 5px;
+}
