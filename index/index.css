@@ -147,7 +147,7 @@ body{
 .album-after-img{
     margin-left: -5px;
     height: 100px;
-    width: 16px;
+    width: 18px;
 }
 .albumlist-item{
     width: 140px;
@@ -178,11 +178,8 @@ body{
 .singer-item:hover{
     border-right:4px solid #c20c0c;
 }
-.singer-img{
-    display: inline-block;
-}
 .singer-info-wrap{
-    display: inline-block;
+    flex: 1;
     padding: 0 5px;
     height: 62px;
 
@@ -200,7 +197,7 @@ body{
 /* ----------------------- singer ---------------------- */
 .footer{
     color: #999;
-    margin:80px 300px 30px 300px ;
+    margin:80px 250px 30px 250px ;
     display: flex;
     flex-direction: column;
     align-items:center;

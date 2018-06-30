@@ -95,4 +95,82 @@ body{
     padding: 10px 0;
     margin-right: 20px;
 }
+/* ----------------------- comments ---------------------- */
+.comment-user-icon{
+    width: 50px;
+    height: 50px;
+}
+.comment-body{
 
+}
+.comment-body-new{
+    display: flex;
+    padding-bottom: 20px;
+}
+.comment-input{
+    margin: 0 20px;
+    flex: 1;
+}
+.comment-input{
+    display: flex;
+    flex-direction: column;
+}
+.new-comment-btnlist{
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.new-comment-len{
+    font-size: 13px;
+    color: #999;
+    padding: 0 5px;
+}
+.new-comment-btn{
+
+}
+
+.comment-item{
+    display: flex;
+    margin:0px 20px 0px 0;
+    padding: 20px 20px 20px 0;
+    border-top: 1px dashed #d3d3d3;
+}
+
+.comment-info-wrap{
+    flex: 1;
+    padding-left: 20px;
+}
+.comment-user-name{
+    font-size: 14px;
+    color: #c20c0c;
+
+}
+.comment-content{
+    color: #333;
+    font-size: 12px;
+    padding: 5px 0 0 0;
+}
+.comment-item-time,.comment-item-likes{
+    font-size: 12px;
+    color: #999;
+}
+.comment-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 5px 0;
+}
+/* ----------------------- singer ---------------------- */
+.footer{
+    color: #999;
+    margin:80px 250px 30px 250px ;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    border-top: 1px solid #d3d3d3;
+}
+
+.footer-link{
+    margin: 20px 0 10px 0;
+
+}
