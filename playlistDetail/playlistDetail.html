@@ -59,44 +59,41 @@
                 </div>
                 <div class="section" v-else>
                     <el-card body-style="padding:6px" class="playlist-img-wrap">
-                        <img v-bind:src="playlist.img_url" class="playlist-img">
+                        <img v-bind:src="album.img_url" class="playlist-img">
                     </el-card>
                     <div class="playlist-content">
                         <div class="playlist-title">
                             <img src="../img/albumTag.png" style="width: 64px;height: 26px;" alt="">
-                            <div>{{playlist.title}} </div>
+                            <div>{{album.title}} </div>
                         </div>
-                        <div class="playlist-author">
-                            <img v-bind:src="playlist.author.img_url" alt="" class="playlist-author-img">
-                            <div class="playlist-author-name">
-                                {{playlist.author.name}}
-                                <i style="color: #eb7504;font-weight: bold;" class="el-icon-star-off"></i>
+                        <div class="album-singer">
+                            <div class="album-singer-name">
+                                歌手：
+                                {{album.singer.name}}
                             </div>
-                            <div class="playlist-time">{{playlist.create_date}} 创建</div>
+                            <div class="album-publish-time">
+                                发行时间：{{album.publish_date}}
+                            </div>
+                            <div class="album-publish-company">
+                                发行公司：{{album.publish_company}}
+                            </div>
                         </div>
+
                         <div class="playlist-btn-wrap">
                             <el-button type="primary" round icon="el-icon-caret-right">播放</el-button>
-                            <el-button  round icon="el-icon-service">{{playlist.play_count}}</el-button>
-                            <el-button  round icon="el-icon-star-off">{{playlist.collect_count}}</el-button>
-                            <el-button  round icon="el-icon-download">{{playlist.download_count}}</el-button>
-                        </div>
-                        <div class="playlist-tag">
-                            <div class="playlist-tag-title">
-                                标签：
-                            </div>
-                            <a href="" class="playlist-tag-item" v-for="tag in playlist.tags">
-                                {{tag}}
-                            </a>
-                        </div>
-                        <div class="playlist-info">
-                            <div class="playlist-info-title">
-                                介绍：
-                            </div>
-                            <pre-wrap class="playlist-info-content">
-                                {{playlist.introduction}}
-                            </pre-wrap>
+                            <el-button  round icon="el-icon-service">{{album.play_count}}</el-button>
+                            <el-button  round icon="el-icon-star-off">{{album.collect_count}}</el-button>
+                            <el-button  round icon="el-icon-download">{{album.download_count}}</el-button>
                         </div>
                     </div>
+                </div>
+                <div class="album-introduction">
+                    <div class="album-info-title">
+                        专辑介绍：
+                    </div>
+                    <p class="album-info-content">
+                        {{album.introduction}}
+                    </p>
                 </div>
                 <div class="songs">
                     <div class="songs-title">

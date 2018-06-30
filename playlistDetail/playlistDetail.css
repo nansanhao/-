@@ -89,6 +89,7 @@ body{
     font-size: 12px;
     color: #666;
 }
+
 /* ----------------------- songs ---------------------- */
 .songs-title>h3{
     border-bottom: 2px solid #c20c0c;
@@ -173,4 +174,24 @@ body{
 .footer-link{
     margin: 20px 0 10px 0;
 
+}
+/* ----------------------- album ---------------------- */
+.album-singer-name,.album-publish-time,.album-publish-company{
+    font-size: 13px;
+    color: #999;
+    padding: 20px 0 0 0;
+}
+.album-singer{
+    padding-bottom: 20px;
+}
+.album-info-title{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+
+}
+.album-info-content{
+    font-size: 12px;
+    color: #666;
+    text-indent: 24px;
 }

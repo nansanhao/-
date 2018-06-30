@@ -17,6 +17,20 @@ new Vue({
             },
             tags:["欧美","流行","电子"]
         },
+        album:{
+            title:"渐渐",
+            play_count:6324,
+            collect_count:511,
+            download_count:322,
+            publish_date:"2018-05-14",
+            publish_company: "环球唱片",
+            img_url:"http://p3.music.126.net/SGRNxyeA6_43M8oB0TuqrQ==/109951163370531309.jpg?param=177y177",
+            introduction:"陈奕迅(Eason)在2010-2012年间举行《DUO》世界巡回演唱会时，希望完成世界巡演后，一班演唱会成员可以共同创作一张专辑，作为团队大家庭之间的一次珍贵留念。事隔几年，这个愿望终于在今年成真，将会推出以「爱」为出发的专辑《L.O.V.E.》，将这段和团队的美好时光透过这张专辑记录下来，每一首歌都是一份来自Eason的「爱」。",
+            singer:{
+                id:"",
+                name:"陈奕迅",
+            }
+        },
         songs:[
             {
                 title:"Safe ",
