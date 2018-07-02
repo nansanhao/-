@@ -1,9 +1,10 @@
 new Vue({
     el:"#app",
     data:{
-        currentPage:1,
-        search_wd:"",
-        tab_current_index:0,
+        current_page:1,
+        search_wd:"陈奕迅",
+        current_tab:"单曲",
+        tab_num:0,
         songs:[
             {
                 title:"Safe ",
@@ -187,7 +188,14 @@ new Vue({
                     name:"南三号",
                 }
             }
-        ]
+        ],
+        lyrics:[],
+        users:[]
+    },
+    watch:{
+        current_page:function () {
+            //TODO 请求某一页的数据
+        }
     },
     methods:{
         fomatString:function (title,len) {
@@ -202,9 +210,25 @@ new Vue({
             console.log(`当前页: ${val}`);
         },
         tabClick:function (currentTab) {
-            this.tab_current_index=currentTab.label;
-            console.log(currentTab)
+            let tabs=["单曲","专辑","歌单","歌词","用户"]
+            this.current_tab=tabs[currentTab.index];
+
+            switch (this.current_tab) {
+                case "单曲":this.tab_num=this.songs.length; break;
+                case "专辑":this.tab_num=this.albumlist.length;break;
+                case "歌单":this.tab_num=this.playlists.length;break;
+                case "歌词":this.tab_num=this.lyrics.length;break;
+                case "用户":this.tab_num=this.users.length;break;
+            }
+        },
+        search:function () {
+            //TODO 搜索
+            console.log(this.search_wd)
         }
+
     },
+    created:function () {
+        this.tab_num=this.songs.length
+    }
 
 })

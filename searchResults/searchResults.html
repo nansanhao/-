@@ -19,12 +19,15 @@
             <div class="s-wrap">
                 <el-input class="search"
                           placeholder="搜索"
+                          v-on:keyup.enter.native="search"
                           prefix-icon="el-icon-search"
                           v-model="search_wd"size="medium">
                 </el-input>
             </div>
             <div class="s-num">
-                搜索{{search_wd}},有{{tab_chooice}}
+                搜索“{{search_wd}}”,一共有
+                <span style="color: #c20c0c">{{tab_num}}</span>
+                {{current_tab}}
             </div>
             <div class="tab">
                 <el-tabs type="border-card" stretch @tab-click="tabClick">
@@ -151,7 +154,7 @@
                         <el-pagination
                                 background
                                 @current-change="handleCurrentChange"
-                                :current-page.sync="currentPage"
+                                :current-page.sync="current_page"
                                 :page-size="10"
                                 layout="prev, pager, next"
                                 :total="100">
