@@ -1,7 +1,7 @@
 new Vue({
     el:"#app",
     data:{
-        isPlaylist:false,
+        isPlaylist:true,
         comment_textarea:"",
         playlist:{
             title:"韵律中邂逅惊艳女嗓，美到心醉",
@@ -172,5 +172,20 @@ new Vue({
                 img_url:"http://p1.music.126.net/g-RIpfoxBdN-JB7JQ6_fnw==/3394192412338121.jpg?param=40y40"
             }
         ]
+    },
+    created:function () {
+        let type=GetQueryString("type");
+        if(type=="playlist"){
+            this.isPlaylist=true;
+        }else {
+            this.isPlaylist=false;
+        }
     }
 })
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]);
+    return null;
+}
