@@ -19,7 +19,7 @@
 <body>
     <div id="app">
         <div class="nav">
-            <el-menu :default-active="menu_active_index" class="el-menu-demo" mode="horizontal" @select="" text-color="#ffffff"
+            <el-menu :default-active="menu_active_index" mode="horizontal" @select="" text-color="#ffffff"
                 background-color="#333" active-text-color="#ffffff">
                 <div class="nav-content">
                     <div class="nav-logo">
@@ -64,7 +64,7 @@
                 <el-dialog title="登录" :visible.sync="loginFormVisible" width="320px" >
                     <el-form :model="login_form">
                         <el-form-item >
-                            <el-input placeholder="账号" v-model="login_form.account" auto-complete="off" suffix-icon="el-icon-error"></el-input>
+                            <el-input placeholder="账号" v-model="login_form.account" auto-complete="off" suffix-icon="el-icon-success"></el-input>
                         </el-form-item>
                         <el-form-item >
                             <el-input placeholder="密码" v-model="login_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
@@ -85,7 +85,7 @@
                 <el-dialog title="注册" :visible.sync="registerFormVisible" width="360px" v-loading="true">
                     <el-form :model="register_form">
                         <el-form-item >
-                            <el-input placeholder="账号" v-model="register_form.account" auto-complete="off" suffix-icon="el-icon-error"></el-input>
+                            <el-input placeholder="账号" v-model="register_form.account" auto-complete="off" suffix-icon="el-icon-success"></el-input>
                         </el-form-item>
                         <el-form-item >
                             <el-input placeholder="密码" v-model="register_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
@@ -96,7 +96,7 @@
 "></el-input>
                         </el-form-item>
                         <el-form-item >
-                            <el-input placeholder="验证码" v-model="register_form.verification_code" auto-complete="off" suffix-icon="el-icon-error"></el-input>
+                            <el-input placeholder="验证码" v-model="register_form.verification_code" auto-complete="off" suffix-icon="el-icon-success"></el-input>
                         </el-form-item>
 
                     </el-form>

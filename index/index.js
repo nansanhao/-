@@ -160,20 +160,61 @@ new Vue({
             window.location.href="../searchResults/searchResults.html?"+`search_wd=${this.search_wd}`
         },
         login:function () {
+            let that=this
             //TODO 发送请求后台如果密码正确
-            this.loginFormVisible=false;
+            let res="ok";
+            if(res=="ok"){
+                that.loginFormVisible=false;
+                this.user={
+                    id:"1",
+                    name:"南三号",
+                    img_url:"http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50"
+                };
+                setTimeout(function () {
+                    that.$message({
+                        message: '登录成功！',
+                        type: 'success',
+                        duration:2000
+                    });
+                },100)
+            }else{
+                setTimeout(function () {
+                    that.$message({
+                        message: '账户或密码错误！请重新输入。',
+                        type: 'error',
+                        duration:2000
+                    });
+                },100)
+            }
+
         },
         register:function () {
-            //TODO 提交到后台
             let that=this
-            this.registerFormVisible=false;
-            setTimeout(function () {
+            if(that.register_form.password==that.register_form.password_repeat){
+                let user={
+                    account:that.register_form.account,
+                    password:that.register_form.password,
+                    verification_code:that.register_form.verification_code
+                }
+                //TODO 提交到后台
+
+                //成功
+                that.registerFormVisible=false;
+                setTimeout(function () {
+                    that.$message({
+                        message: '注册成功，去登录吧！',
+                        type: 'success',
+                        duration:2000
+                    });
+                },100)
+            }else {
                 that.$message({
-                    message: '注册成功，去登录吧！',
-                    type: 'success',
+                    message: '错误！前后两次密码输入不同。',
+                    type: 'error',
                     duration:2000
                 });
-            },100)
+            }
+
 
 
         },
