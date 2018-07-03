@@ -2,6 +2,11 @@ new Vue({
     el: '#app',
     data: {
         // form
+        user:{
+            id:"1",
+            name:"南三号",
+            img_url:"http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50",
+        },
         loginFormVisible: false,
         formLabelWidth: '40px',
         search_wd:"",
@@ -20,11 +25,11 @@ new Vue({
         menu_active_index: '1',
         carousel_items: [
             {
-                image_url: "../img/test.png",
+                image_url: "http://p1.music.126.net/Xup_vNV7Nt_x-tkA_rt9Kg==/109951163386184344.jpg",
                 link_url: ""
             },
             {
-                image_url: "http://p1.music.126.net/qOYGDNKsAkHMtvPCnXsnpQ==/109951163381419672.jpg",
+                image_url: "http://p1.music.126.net/3uB-oiMF9kijh08H3V7h0g==/109951163388093787.jpg",
                 link_url: ""
             },
             {
@@ -158,6 +163,20 @@ new Vue({
             //TODO 发送请求后台如果密码正确
             this.loginFormVisible=false;
         },
+        register:function () {
+            //TODO 提交到后台
+            let that=this
+            this.registerFormVisible=false;
+            setTimeout(function () {
+                that.$message({
+                    message: '注册成功，去登录吧！',
+                    type: 'success',
+                    duration:2000
+                });
+            },100)
+
+
+        },
         toRegisterORLogin:function (type) {
             let that=this;
             if(type=="Login"){
@@ -172,6 +191,20 @@ new Vue({
                     that.registerFormVisible=true;
                 },200)
             }
+        },
+        handleCommand:function (command) {
+            if(command=="logout"){
+                this.user=null;
+                this.$message({
+                    message: '登出成功！',
+                    type: 'success',
+                    duration:1000
+                });
+            }
+            if(command=="homepage"){
+                window.location.href="../homepage/homepage.html?user_id="+this.user.id
+            }
+
         }
     }
 })

@@ -62,12 +62,19 @@ body{
 }
 .log{
     margin: 0 10px 0 10px;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
-.log>a{
+.log-or-register{
+    
+}
+.log-or-register>a{
     color: #787878;
     text-decoration: none;
 }
-.log>a:hover{
+.log-or-register>a:hover{
     color: #666;
     text-decoration: underline;
 }
@@ -209,6 +216,11 @@ body{
 
 }
 /* ----------------------- login ---------------------- */
+.user{
+    display: flex;
+    align-items: center;
+    color: white;
+}
 .el-dialog__header{
 
 }
@@ -245,6 +257,10 @@ body{
 .login-button:hover,.register-button:hover{
     background-color: #ec2a32;
     border: none;
+}
+.login-button:focus,.register-button:focus{
+    background-color: #c20c0c;
+    border-color: #c20c0c;
 }
 .el-form-item__content input:focus{
     border-color: #c20c0c;

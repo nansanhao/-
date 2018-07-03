@@ -109,7 +109,7 @@ let app=new Vue({
                 author:{
                     id:"1",
                     name:"南三号",
-                }--+
+                }
             },
             {
                 title:"岁月留声｜听一张２０世纪的老唱片",
