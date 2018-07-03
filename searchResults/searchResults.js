@@ -1,4 +1,4 @@
-new Vue({
+let app=new Vue({
     el:"#app",
     data:{
         current_page:1,
@@ -228,7 +228,17 @@ new Vue({
 
     },
     created:function () {
-        this.tab_num=this.songs.length
+        this.tab_num=this.songs.length;
+        this.search_wd=getQueryString("search_wd")
     }
 
 })
+function getQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)
+        return  decodeURI(r[2]);
+    return null;
+}
+

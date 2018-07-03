@@ -34,8 +34,9 @@
                     <el-menu-item index="6" class="nav-item" disabled>下载客户端</el-menu-item>
                     <el-input class="search"
                               placeholder="搜索"
+                              v-on:keyup.enter.native="search"
                               prefix-icon="el-icon-search"
-                              v-model="input2"size="medium">
+                              v-model="search_wd"size="medium">
                     </el-input>
                     <div class="log">
                         <a href="#" @click="loginFormVisible = true">登录</a>
@@ -98,7 +99,7 @@
         <div class="carousel-wrap">
             <div class="carousel">
                 <el-carousel type="card" height="336px">
-                    <el-carousel-item v-for="item in carousel_items" :key="item">
+                    <el-carousel-item v-for="item in carousel_items" >
                         <img class="carousel-img" v-bind:src="item.image_url" alt="" srcset="">
                     </el-carousel-item>
                 </el-carousel>

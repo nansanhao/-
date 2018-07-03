@@ -4,6 +4,7 @@ new Vue({
         // form
         loginFormVisible: false,
         formLabelWidth: '40px',
+        search_wd:"",
         login_form: {
             account: '',
             password: '',
@@ -19,7 +20,7 @@ new Vue({
         menu_active_index: '1',
         carousel_items: [
             {
-                image_url: "http://p1.music.126.net/tRIh-Ur8BZBTS0vbfmZ0Nw==/109951163379832546.jpg",
+                image_url: "../img/test.png",
                 link_url: ""
             },
             {
@@ -148,6 +149,11 @@ new Vue({
                 return title
             }
 
+        },
+        search:function () {
+            console.log("搜索")
+            window.location.href="../searchResults/searchResults.html?"+`search_wd=${this.search_wd}`
         }
     }
 })
+

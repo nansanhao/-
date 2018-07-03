@@ -1,0 +1,73 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+#app{
+    display: flex;
+    justify-content: center;
+
+}
+.main{
+    width: 982px;
+    padding: 40px;
+    border-left: 1px solid #d3d3d3;
+    border-right:1px solid #d3d3d3;
+    border-bottom:1px solid #d3d3d3;
+
+}
+.prompt{
+    font-size: 12px;
+    color: #666;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: #000;
+    text-decoration: underline;
+}
+/* ----------------------- user ---------------------- */
+.user-wrap{
+    display: flex;
+}
+.u-info{
+    margin-left: 40px;
+    flex: 1;
+}
+.u-name{
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #d3d3d3;
+}
+.u-count{
+    display: flex;
+    margin: 10px 0 20px 0;
+}
+.u-c-key{
+    font-size: 12px;
+    color: #666;
+}
+.u-c-value{
+    font-size: 24px;
+    color: #666;
+}
+.u-c-likes,.u-c-listen,.u-c-playlist{
+    margin: 10px 30px 10px 0 ;
+    padding-right: 30px;
+}
+.u-c-likes,.u-c-listen{
+    border-right: 1px solid #ddd;
+}
+.u-location{
+    font-size: 12px;
+    color: #666;
+}
+/* ----------------------- songs ---------------------- */
+.songs-title>h3{
+    border-bottom: 2px solid #c20c0c;
+    padding: 10px 0;
+
+}

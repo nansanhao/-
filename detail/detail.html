@@ -114,16 +114,18 @@
                                 width="40">
                         </el-table-column>
                         <el-table-column label="操作"
-                        width="100">
+                                         width="100">
                             <template slot-scope="scope">
                                 <el-button icon="el-icon-caret-right" size="mini" style="color: #c20c0c;" circle></el-button>
                                 <el-button icon="el-icon-plus" size="mini" style="color: #c20c0c;" circle></el-button>
                             </template>
                         </el-table-column>
                         <el-table-column
-                                prop="title"
                                 label="歌曲名"
                                 width="180">
+                            <template slot-scope="scope">
+                                <a href="#">{{scope.row.title}}</a>
+                            </template>
                         </el-table-column>
                         <el-table-column
                                 prop="duration"
@@ -131,13 +133,17 @@
                                 width="80">
                         </el-table-column>
                         <el-table-column
-                                prop="album"
                                 label="专辑"
                                 width="160">
+                            <template slot-scope="scope">
+                                <a href="#">{{scope.row.album}}</a>
+                            </template>
                         </el-table-column>
                         <el-table-column
-                                prop="singer"
                                 label="歌手">
+                            <template slot-scope="scope">
+                                <a href="#">{{scope.row.singer}}</a>
+                            </template>
                         </el-table-column>
                     </el-table>
 

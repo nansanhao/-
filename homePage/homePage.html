@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <link rel="stylesheet" href="./homePage.css">
+</head>
+<body>
+    <div id="app">
+        <div class="main">
+            <div class="user-wrap">
+                <div class="u-img">
+                    <img style="width: 188px;height: 188px;" v-bind:src="user.img_url" alt="" >
+                </div>
+                <div class="u-info">
+                    <div class="u-name">
+                        <div><i class="el-icon-caret-bottom"></i>  {{user.name}}</div>
+                        <a href=""><i class="el-icon-setting"></i></a>
+                    </div>
+                    <div class="u-count">
+                        <div class="u-c-likes">
+                            <div class="u-c-value">{{user.likes_count}}</div>
+                            <div class="u-c-key">喜欢</div>
+                        </div>
+                        <div class="u-c-listen">
+                            <div class="u-c-value">{{user.listen_count}}</div>
+                            <div class="u-c-key">听歌</div>
+                        </div>
+                        <div class="u-c-playlist">
+                            <div class="u-c-value">{{user.playlist_count}}</div>
+                            <div class="u-c-key">歌单</div>
+                        </div>
+                    </div>
+                    <div class="u-location">
+                        所在地区：{{user.location}}
+                    </div>
+                </div>
+            </div>
+            <div class="u-like-songs">
+                <div class="songs-title">
+                    <h3>
+                        <i class="el-icon-caret-bottom"></i>
+                        喜欢的歌曲
+                        <span style="font-size: 12px;color: #666;font-weight: normal;margin-left: 20px">
+                            {{songs_count}}首歌
+                        </span>
+                    </h3>
+                </div>
+                <div v-if="songs.length!=0">
+                    <el-table
+                            :data="songs"
+                            stripe
+                            style="width: 100%">
+                        <el-table-column
+                                type="index"
+                                width="40">
+                        </el-table-column>
+                        <el-table-column label="操作"
+                                         width="100">
+                            <template slot-scope="scope">
+                                <el-button icon="el-icon-caret-right" size="mini" style="color: #c20c0c;" circle></el-button>
+                                <el-button icon="el-icon-plus" size="mini" style="color: #c20c0c;" circle></el-button>
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                                label="歌曲名"
+                                width="180">
+                            <template slot-scope="scope">
+                                <a href="#">{{scope.row.title}}</a>
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                                prop="duration"
+                                label="时长"
+                                width="80">
+                        </el-table-column>
+                        <el-table-column
+                                label="专辑"
+                                width="160">
+                            <template slot-scope="scope">
+                                <a href="#">{{scope.row.album}}</a>
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                                label="歌手">
+                            <template slot-scope="scope">
+                                <a href="#">{{scope.row.singer}}</a>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
+                <div v-else class="prompt">还没有喜欢的歌曲哦。去 <a style="color:#c20c0c" href="../index/index.html">首页</a> 看看</div>
+
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script type="text/javascript" src="./homePage.js"></script>
+</body>
+</html>
