@@ -58,9 +58,9 @@
                         <div class="forget-password">
                             <a href="#">忘记密码？</a>
                         </div>
-                        <el-button class="login-button" type="primary" @click="dialogFormVisible = false">登录</el-button>
-                        <div>
-                            <a href="" class="to-register">注册</a>
+                        <el-button class="login-button" type="primary" @click="login">登录</el-button>
+                        <div >
+                            <a href="#" class="to-register" @click="toRegisterORLogin('Register')">注册</a>
                         </div>
                     </div>
                 </el-dialog>
@@ -89,7 +89,7 @@
                         </div>
                         <el-button class="register-button" type="primary" @click="registerFormVisible = false">注册</el-button>
                         <div>
-                            <a href="" class="to-login">登录</a>
+                            <a href="#" class="to-login" @click="toRegisterORLogin('Login')">登录</a>
                         </div>
                     </div>
                 </el-dialog>

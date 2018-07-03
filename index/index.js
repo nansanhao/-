@@ -153,6 +153,25 @@ new Vue({
         search:function () {
             console.log("搜索")
             window.location.href="../searchResults/searchResults.html?"+`search_wd=${this.search_wd}`
+        },
+        login:function () {
+            //TODO 发送请求后台如果密码正确
+            this.loginFormVisible=false;
+        },
+        toRegisterORLogin:function (type) {
+            let that=this;
+            if(type=="Login"){
+                that.registerFormVisible=false;
+                setTimeout(function () {
+                    that.loginFormVisible=true;
+                },200)
+            }
+            else if(type=="Register"){
+                that.loginFormVisible=false;
+                setTimeout(function () {
+                    that.registerFormVisible=true;
+                },200)
+            }
         }
     }
 })
