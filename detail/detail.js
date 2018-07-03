@@ -35,56 +35,86 @@ new Vue({
             {
                 title:"Safe ",
                 duration:"03:20",
-                album:"Safe",
+                album:{
+                    id:'1',
+                    name:"Safe"
+                },
                 singer:"Daya"
             },
             {
                 title:"Only You",
                 duration:"03:09",
-                album:"Only You",
+                album:{
+                    id:'2',
+                    name:"Only You"
+                },
                 singer:"Cheat Codes"
             },{
                 title:"You",
                 duration:"03:20",
-                album:"Odyssey",
+                album:{
+                    id:'3',
+                    name:"Odyssey"
+                },
                 singer:"Matlda"
             },{
                 title:"Need You Right Now",
                 duration:"03:25",
-                album:"Safe",
+                album:{
+                    id:'4',
+                    name:"Safe"
+                },
                 singer:"Hedegaard"
             },{
                 title:"Cruel",
                 duration:"03:31",
-                album:"Cruel",
+                album:{
+                    id:'5',
+                    name:"Safe"
+                },
                 singer:"Tobu"
             },{
                 title:"Horizon",
                 duration:"03:00",
-                album:"Horizon",
+                album:{
+                    id:'6',
+                    name:"Safe"
+                },
                 singer:"Kill The Noise"
             },{
                 title:"Your Place or Mine",
                 duration:"03:14",
-                album:"Your Place or Mine",
+                album:{
+                    id:'7',
+                    name:"Your Place or Mine"
+                },
                 singer:"Zay"
             },
             {
                 title:"California",
                 duration:"03:20",
-                album:"California",
+                album:{
+                    id:'8',
+                    name:"California"
+                },
                 singer:"Hot Shade"
             }
             ,{
                 title:"Big Words",
                 duration:"03:16",
-                album:"Big Words",
+                album:{
+                    id:'9',
+                    name:"Big Words"
+                },
                 singer:"Klaas"
             }
             ,{
                 title:"Because Of You",
                 duration:"04:01",
-                album:"Because Of You",
+                album:{
+                    id:'10',
+                    name:"Because Of You"
+                },
                 singer:"Steve Void"
             }
         ],

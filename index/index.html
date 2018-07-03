@@ -134,7 +134,7 @@
                             <el-card body-style="padding:8px">
                                 <img v-bind:src="item.img_url" class="playlist-item-img">
                                 <div>
-                                    <div class="item-title">{{fomatString(item.title,17)}}</div>
+                                    <div class="item-title"><a v-bind:href="'../detail/detail.html?type=playlist&id='+item.id">{{fomatString(item.title,17)}}</a></div>
                                     <div>
                                         <div class="item-time">{{item.create_date}}</div>
                                         <!--<div class="btn-list">-->
@@ -158,7 +158,12 @@
                                 <img v-bind:src="item.img_url" class="albumlist-item-img">
                                 <img class="album-after-img" src="../img/album.png" alt="">
                                 <div albumlist-item-info>
-                                    <div class="item-title">{{fomatString(item.title,12)}}</div>
+                                    <div class="item-title">
+                                        <a v-bind:href="'../detail/detail.html?type=album&id='+item.id">
+                                            {{fomatString(item.title,12)}}
+                                        </a>
+
+                                    </div>
                                     <div class="item-singer">{{fomatString(item.singer,12)}}</div>
                                 </div>
                             </el-card>
