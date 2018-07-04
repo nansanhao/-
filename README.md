@@ -94,25 +94,25 @@
 
 #### 专辑详情页
 
-> GET		/albums/:id		获得某一张唱片的信息		
+> GET		/album?a_id=		获得某一张唱片的信息		
 >
-> GET		/albums/:id/songs?limit=&offset=		获得某一张唱片的歌曲
+> GET		/album/songs?a_id=&limit=&offset=		获得某一张唱片的歌曲
 >
-> GET		/albums/:id/comments?limit=&offset=		获得某一张唱片的评论
+> GET		/album/comments?a_id=&limit=&offset=		获得某一张唱片的评论
 
 #### 歌单详情页
 
-> GET		/playlist/:id		获得某一张歌单的信息
+> GET		/playlist?p_id=		获得某一张歌单的信息
 >
-> GET		/playlist/:id/songs?limit=&offset=		获得某一张歌单的歌曲
+> GET		/playlist/songs?p_id=&limit=&offset=		获得某一张歌单的歌曲
 >
-> GET		/playlist/:id/comments?limit=&offset=		获得某一张歌单的评论
+> GET		/playlist/comments?p_id=&limit=&offset=		获得某一张歌单的评论
 
 #### 播放页
 
-> GET		/songs/:id		获得某首歌曲
+> GET		/song/?s_id=		获得某首歌曲
 >
-> GET		/songs/:id/comments?limit=&offset=		获得某首歌曲的评论
+> GET		/song/comments?s_id=&limit=&offset=		获得某首歌曲的评论
 
 #### 登录注册
 
@@ -122,9 +122,9 @@
 
 #### 个人主页
 
-> GET		/user/:id/likes?limit=&offset=		获得用户收藏的歌曲
+> GET		/user/likes?u_id=&limit=&offset=		获得用户收藏的歌曲
 >
-> GET		/user/:id			获得某个用户的个人信息
+> GET		/user?u_id=		获得某个用户的个人信息
 
 #### 上传下载
 
