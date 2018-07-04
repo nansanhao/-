@@ -210,6 +210,11 @@ new Vue({
         }else {
             this.isPlaylist=false;
         }
+        if(this.isPlaylist){
+            //访问后台得到playlist的数据
+        }else {
+            //访问后台获得album的数据
+        }
     }
 })
 function GetQueryString(name)

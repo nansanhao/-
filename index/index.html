@@ -166,7 +166,11 @@
                                         </a>
 
                                     </div>
-                                    <div class="item-singer">{{fomatString(item.singer,12)}}</div>
+                                    <div class="item-singer">
+                                        <a v-bind:href="'../singerDetail/singerDetail.html?id='+item.id">
+                                            {{fomatString(item.singer.name,12)}}
+                                        </a>
+                                    </div>
                                 </div>
                             </el-card>
                         </div>
@@ -179,7 +183,7 @@
                     <div class="hot-singer-content">
                         <div class="singer-item" v-for="singer in hot_singer">
                             <div class="singer-img">
-                                <img v-bind:src="singer.image_url" style="width: 62px;height: 62px;" alt="">
+                                <img v-bind:src="singer.img_url" style="width: 62px;height: 62px;" alt="">
                             </div>
                             <div class="singer-info-wrap">
                                 <div class="singer-name">{{singer.name}}</div>
@@ -194,7 +198,7 @@
                     <div class="hot-singer-content">
                         <div class="singer-item" v-for="singer in hot_singer">
                             <div class="singer-img">
-                                <img v-bind:src="singer.image_url" style="width: 62px;height: 62px;" alt="">
+                                <img v-bind:src="singer.img_url" style="width: 62px;height: 62px;" alt="">
                             </div>
                             <div class="singer-info-wrap">
                                 <div class="singer-name">{{singer.name}}</div>

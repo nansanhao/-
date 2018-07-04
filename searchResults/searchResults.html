@@ -52,7 +52,7 @@
                                     label="歌曲名"
                                     width="180">
                                 <template slot-scope="scope">
-                                    <a href="#">{{scope.row.title}}</a>
+                                    <a v-bind:href="'../musicDetail/musicDetail.html?id='+scope.row.id">{{scope.row.title}}</a>
                                 </template>
                             </el-table-column>
                             <el-table-column
@@ -64,13 +64,13 @@
                                     label="专辑"
                                     width="160">
                                 <template slot-scope="scope">
-                                    <a href="#">{{scope.row.album}}</a>
+                                    <a v-bind:href="'../detail/detail.html?type=album&id='+scope.row.album.id">{{scope.row.album.name}}</a>
                                 </template>
                             </el-table-column>
                             <el-table-column
                                     label="歌手">
                                 <template slot-scope="scope">
-                                    <a href="#">{{scope.row.singer}}</a>
+                                    <a v-bind:href="'../singerDetail/singerDetail.html?id='+scope.row.singer.id">{{scope.row.singer.name}}</a>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -83,11 +83,11 @@
                                     <img src="../img/album.png" style="height: 130px;width: 23px;margin-left: -5px" alt="">
                                     <div class="album-info">
                                         <div class="album-an">
-                                            <a href="../detail/detail.html?type=album&id=1">{{fomatString(album.title,16)}}</a>
+                                            <a v-bind:href="'../detail/detail.html?type=album&id='+album.id">{{fomatString(album.title,16)}}</a>
                                         </div>
                                         <div class="album-sn">
-                                            <a href="#">
-                                                {{fomatString(album.singer,16)}}
+                                            <a v-bind:href="'../singerDetail/singerDetail.html?id='+album.singer.id">
+                                            {{fomatString(album.singer.name,16)}}
                                             </a>
                                         </div>
                                     </div>
@@ -119,7 +119,9 @@
                                     <template slot-scope="scope">
                                         <div class="playlist-title">
                                             <img v-bind:src="scope.row.img_url" alt="" style="height: 50px;width: 50px;">
-                                            <a href="#">{{fomatString(scope.row.title,11)}}</a>
+                                            <a v-bind:href="'../detail/detail.html?type=playlist&id='+scope.row.id">
+                                                {{fomatString(scope.row.title,11)}}
+                                            </a>
                                         </div>
 
                                     </template>
@@ -142,7 +144,9 @@
                                 <el-table-column
                                         label="BY">
                                     <template slot-scope="scope">
-                                        <a href="#">{{fomatString(scope.row.author.name,10)}}</a>
+                                        <a v-bind:href="'../homePage/homePage.html?type=other&id='+scope.row.author.id">
+                                            {{fomatString(scope.row.author.name,10)}}
+                                        </a>
                                     </template>
                                 </el-table-column>
                             </el-table>

@@ -107,54 +107,73 @@ new Vue({
             {
                 id: "1",
                 title: "EVERYTHING IS LOVE",
-                singer: "The Carters / Beyoncé / Jay-Z",
+                singer: {
+                    id:1,
+                    name:"The Carters / Beyoncé / Jay-Z"
+                },
                 img_url: "http://p3.music.126.net/WcVJXehoHv1_b0GyWFCjmA==/109951163365318229.jpg?param=100y100"
             },
             {
                 id: "2",
                 title: "王牌冤家",
-                singer: "李荣浩",
+                singer: {
+                    id:1,
+                    name:"李荣浩"
+                },
                 img_url: "http://p3.music.126.net/ldRfSHRgtSZRsNruD54taQ==/109951163370797182.jpg?param=100y100"
             },
             {
                 id: "3",
                 title: "平凡的一天",
-                singer: "毛不易",
+                singer: {
+                    id:2,
+                    name:"毛不易"
+                },
                 img_url: "http://p4.music.126.net/vmCcDvD1H04e9gm97xsCqg==/109951163350929740.jpg?param=100y100"
             },
             {
                 id: "4",
                 title: "Born To Be Yours",
-                singer: "Kygo / Imagine Dragons",
+                singer: {
+                    id:3,
+                    name:"Kygo / Imagine Dragons"
+                },
                 img_url: "http://p3.music.126.net/w84c5_ebsl9cqchrzT1pug==/109951163349702736.jpg?param=100y100"
             },
             {
                 id: "5",
                 title: "F.L.Y. BOYS F.L.Y. GIRLS",
-                singer: "GENERATIONS from EXILE TRIBE",
+                singer: {
+                    id:6,
+                    name:"GENERATIONS from EXILE TRIBE"
+                },
                 img_url: "http://p4.music.126.net/ucsboPMm818QenSE8g-YnQ==/109951163336294560.jpg?param=100y100"
             }
         ],
         hot_singer: [
             {
+                id:"1",
                 name: "张惠妹aMEI",
                 info: "台湾歌手张惠妹",
-                image_url: "http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62"
+                img_url: "http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62"
             },
             {
+                id:"2",
                 name: "Fine乐团",
                 info: "独立音乐人",
-                image_url: "http://p1.music.126.net/1EN_iqQWU_E3DafzEOh3cA==/3302932937408956.jpg?param=62y62"
+                img_url: "http://p1.music.126.net/1EN_iqQWU_E3DafzEOh3cA==/3302932937408956.jpg?param=62y62"
             },
             {
+                id:"3",
                 name: "萬曉利",
                 info: "民谣歌手、中国现代民谣的代表人物之一",
-                image_url: "http://p1.music.126.net/ZuktZvjcxpYBjcWC3gmbPg==/19027048718765608.jpg?param=62y62"
+                img_url: "http://p1.music.126.net/ZuktZvjcxpYBjcWC3gmbPg==/19027048718765608.jpg?param=62y62"
             },
             {
+                id:"4",
                 name: "音乐人赵雷",
                 info: "民谣歌手",
-                image_url: "http://p1.music.126.net/v_zYgE9kmAwVGWV2c8hFxA==/7943971513291094.jpg?param=62y62"
+                img_url: "http://p1.music.126.net/v_zYgE9kmAwVGWV2c8hFxA==/7943971513291094.jpg?param=62y62"
             }
         ]
 
@@ -255,7 +274,7 @@ new Vue({
                 });
             }
             if (command == "homepage") {
-                window.location.href = "../homepage/homepage.html?user_id=" + this.user.id
+                window.location.href = "../homepage/homepage.html?type=mine&id=" + this.user.id
             }
 
         }
@@ -299,5 +318,14 @@ function formatAlbums(album) {
         img_url:album.photo
     }
     return album_f
+}
+function formatSinger(singer) {
+    let singer_f={
+        id:singer.id,
+        name:singer.name,
+        info:singer.introduction,
+        img_url:singer.photo
+    }
+    return singer_f
 }
 

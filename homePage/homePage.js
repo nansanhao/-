@@ -25,8 +25,7 @@ new Vue({
             likes_count:15,
             listen_count:26,
             playlist_count:4,
-            location:"湖北省 - 武汉市",
-
+            location:"湖北省 - 武汉市"
         },
         //page
         songs_count:56,
@@ -84,6 +83,14 @@ new Vue({
                 window.location.href="../homepage/homepage.html?user_id="+this.user.id
             }
 
+        }
+    },
+    created:function () {
+        let type=GetQueryString("type");
+        if(type=="mine"){
+            //获得我的主页
+        }else {
+            //获得其他人的主页
         }
     }
 })
