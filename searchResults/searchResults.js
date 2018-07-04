@@ -1,10 +1,27 @@
 let app=new Vue({
     el:"#app",
     data:{
+        limit:10,
+        total:100,
         current_page:1,
         search_wd:"陈奕迅",
-        current_tab:"单曲",
-        tab_num:0,
+
+        current_tab:"首单曲",
+
+        song_current_page:2,
+        song_total:100,
+
+        album_current_page:3,
+        album_total:200,
+
+        playlist_current_page:1,
+        playlist_total:100,
+
+        lyric_current_page:5,
+        lyric_total:500,
+
+        user_current_page:4,
+        user_total:400,
         songs:[
             {
                 id:2,
@@ -295,18 +312,42 @@ let app=new Vue({
 
         },
         handleCurrentChange:function (val) {
+            let that=this;
+            let current_tab=that.current_tab;
+            let offset=(val-1)*that.limit+1;
+            let limit=that.limit;
             console.log(`当前页: ${val}`);
+            if(current_tab=="song"){
+                //访问后台从offset开始limit个song
+            }else if(current_tab=="album"){
+
+            }
         },
         tabClick:function (currentTab) {
-            let tabs=["单曲","专辑","歌单","歌词","用户"]
+            let tabs=["首单曲","张专辑","张歌单","份歌词","个用户"]
             this.current_tab=tabs[currentTab.index];
 
             switch (this.current_tab) {
-                case "单曲":this.tab_num=this.songs.length; break;
-                case "专辑":this.tab_num=this.albumlist.length;break;
-                case "歌单":this.tab_num=this.playlists.length;break;
-                case "歌词":this.tab_num=this.lyrics.length;break;
-                case "用户":this.tab_num=this.users.length;break;
+                case "首单曲":
+                    this.total=this.song_total;
+                    this.current_page=this.song_current_page;
+                    break;
+                case "张专辑":
+                    this.total=this.album_total;
+                    this.current_page=this.album_current_page;
+                    break;
+                case "张歌单":
+                    this.total=this.playlist_total;
+                    this.current_page=this.playlist_current_page;
+                    break;
+                case "份歌词":
+                    this.total=this.lyric_total;
+                    this.current_page=this.lyric_current_page;
+                    break;
+                case "个用户":
+                    this.total=this.user_total;
+                    this.current_page=this.user_current_page;
+                    break;
             }
         },
         search:function () {
@@ -316,7 +357,7 @@ let app=new Vue({
 
     },
     created:function () {
-        this.tab_num=this.songs.length;
+        this.tab_num=this.song_total;
         this.search_wd=getQueryString("search_wd")
     }
 
