@@ -213,7 +213,7 @@ new Vue({
         if(this.isPlaylist){
             //访问后台得到playlist的数据
         }else {
-            //访问后台获得album的数据
+            //获得album的数据
         }
     }
 })

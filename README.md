@@ -8,7 +8,7 @@
 
 #### 技术栈：
 
-前端：Vue＋Vue router+restful API
+前端：Vue＋ElementUI+restful API
 
 后台：
 
@@ -116,6 +116,8 @@
 
 #### 登录注册
 
+> GET			/login		获取登录态
+>
 > POST		/login		登录
 >
 > ```javascript
@@ -156,6 +158,65 @@
 > POST		/upload		上传
 >
 > GET			/download		下载
+
+#### 评论
+
+>POST			/album/comment			评论专辑
+>
+>```js
+>//body内容
+>{
+>    a_id:"",
+>    u_id:"",
+>    content:""
+>}
+>```
+>
+>POST			/playlist/comment		评论歌单
+>
+>```js
+>//body内容
+>{
+>    p_id:"",
+>    u_id:"",
+>	content:""
+>}
+>```
+>
+>POST			/song/comment			评论歌曲
+>
+>```js
+>//body内容
+>{
+>    s_id:"",
+>    u_id:"",
+>    content:""
+>}
+>```
+
+#### 添加
+
+>POST			/user/song			添加歌曲
+>
+>```js
+>//body内容
+>{
+>    u_id:"",
+>    s_id:""
+>}
+>```
+>
+>POST			/user/playlist			添加歌单
+>
+>```js
+>//body内容
+>{
+>    u_id:"",
+>    p_id:""
+>}
+>```
+
+
 
 ## 四、前端页面设计
 - 主页
