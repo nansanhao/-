@@ -82,7 +82,7 @@
 
 > GET		/hot/albums?limit=		获得热门专辑		
 >
-> GET		/hot/playlist?limit=		获得热门歌单
+> GET		/hot/playlists?limit=		获得热门歌单
 >
 > GET		/hot/songs?limit=		获得热门歌曲
 >

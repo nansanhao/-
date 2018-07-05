@@ -33,7 +33,7 @@ new Vue({
                 link_url: ""
             },
             {
-                image_url: "http://p1.music.126.net/kCpE47CGXd79Osh-GvWwzQ==/109951163377208783.jpg",
+                image_url: "http://p1.music.126.net/JyDZ9jQzc6oEIxtKOAmPGg==/109951163391348799.jpg",
                 link_url: ""
             },
             {
@@ -108,8 +108,8 @@ new Vue({
                 id: "1",
                 title: "EVERYTHING IS LOVE",
                 singer: {
-                    id:1,
-                    name:"The Carters / Beyoncé / Jay-Z"
+                    id: 1,
+                    name: "The Carters / Beyoncé / Jay-Z"
                 },
                 img_url: "http://p3.music.126.net/WcVJXehoHv1_b0GyWFCjmA==/109951163365318229.jpg?param=100y100"
             },
@@ -117,8 +117,8 @@ new Vue({
                 id: "2",
                 title: "王牌冤家",
                 singer: {
-                    id:1,
-                    name:"李荣浩"
+                    id: 1,
+                    name: "李荣浩"
                 },
                 img_url: "http://p3.music.126.net/ldRfSHRgtSZRsNruD54taQ==/109951163370797182.jpg?param=100y100"
             },
@@ -126,8 +126,8 @@ new Vue({
                 id: "3",
                 title: "平凡的一天",
                 singer: {
-                    id:2,
-                    name:"毛不易"
+                    id: 2,
+                    name: "毛不易"
                 },
                 img_url: "http://p4.music.126.net/vmCcDvD1H04e9gm97xsCqg==/109951163350929740.jpg?param=100y100"
             },
@@ -135,8 +135,8 @@ new Vue({
                 id: "4",
                 title: "Born To Be Yours",
                 singer: {
-                    id:3,
-                    name:"Kygo / Imagine Dragons"
+                    id: 3,
+                    name: "Kygo / Imagine Dragons"
                 },
                 img_url: "http://p3.music.126.net/w84c5_ebsl9cqchrzT1pug==/109951163349702736.jpg?param=100y100"
             },
@@ -144,36 +144,62 @@ new Vue({
                 id: "5",
                 title: "F.L.Y. BOYS F.L.Y. GIRLS",
                 singer: {
-                    id:6,
-                    name:"GENERATIONS from EXILE TRIBE"
+                    id: 6,
+                    name: "GENERATIONS from EXILE TRIBE"
                 },
                 img_url: "http://p4.music.126.net/ucsboPMm818QenSE8g-YnQ==/109951163336294560.jpg?param=100y100"
             }
         ],
         hot_singer: [
             {
-                id:"1",
+                id: "1",
                 name: "张惠妹aMEI",
                 info: "台湾歌手张惠妹",
                 img_url: "http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62"
             },
             {
-                id:"2",
+                id: "2",
                 name: "Fine乐团",
                 info: "独立音乐人",
                 img_url: "http://p1.music.126.net/1EN_iqQWU_E3DafzEOh3cA==/3302932937408956.jpg?param=62y62"
             },
             {
-                id:"3",
+                id: "3",
                 name: "萬曉利",
                 info: "民谣歌手、中国现代民谣的代表人物之一",
                 img_url: "http://p1.music.126.net/ZuktZvjcxpYBjcWC3gmbPg==/19027048718765608.jpg?param=62y62"
             },
             {
-                id:"4",
+                id: "4",
                 name: "音乐人赵雷",
                 info: "民谣歌手",
                 img_url: "http://p1.music.126.net/v_zYgE9kmAwVGWV2c8hFxA==/7943971513291094.jpg?param=62y62"
+            }
+        ],
+        hot_song: [
+            {
+                id: "1",
+                title: "离开你的城市后",
+                singer: "陈壹千",
+                img_url: "http://p1.music.126.net/45634l0yUQ_sn9txSBYtwQ==/109951163381808991.jpg?param=50y50&quality=100"
+            },
+            {
+                id: "2",
+                title: "又失恋了",
+                singer: "花粥",
+                img_url: "http://p1.music.126.net/j8Ome8FtxMRFZW6ud7Wptg==/109951163380476040.jpg?param=50y50&quality=100"
+            },
+            {
+                id: "3",
+                title: "城南谣",
+                singer: "木小雅",
+                img_url: "http://p1.music.126.net/vkq9WoQY_X8aRup0_whfrw==/109951163381867578.jpg?param=50y50&quality=100"
+            },
+            {
+                id: "4",
+                title: "怪咖",
+                singer: "薛之谦",
+                img_url: "http://p1.music.126.net/3nHehbAPLSlpNM0bdiL1JQ==/109951163380470594.jpg?param=50y50&quality=100"
             }
         ]
 
@@ -280,29 +306,65 @@ new Vue({
         }
     },
     created: function () {
-        let that=this
-        axios.get('/hot/album', {
+        let that = this
+        axios.get('/hot/albums', {
             params: {
-                limit:10
+                limit: 10
             }
         })
-        .then(function (response) {
-            let data=response.data;
-            that.albumlist=data.map(formatAlbums(album))
+            .then(function (response) {
+                let data = response.data;
+                that.albumlist = data.map(formatAlbums)
+            })
+            .catch(function (error) {
+                console.log("获取热门唱片失败");
+            });
+        axios.get('/hot/singers', {
+            params: {
+                limit: 5
+            }
         })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(function (response) {
+                let data = response.data;
+                that.hot_singer = data.map(formatSinger)
+            })
+            .catch(function (error) {
+                console.log("获取热门歌手失败");
+            });
+        axios.get('/hot/plalists', {
+            params: {
+                limit: 8
+            }
+        })
+            .then(function (response) {
+                let data = response.data;
+                that.hot_playlist = data.map(formatPlaylists)
+            })
+            .catch(function (error) {
+                console.log("获取热门歌单失败");
+            });
+        axios.get('/hot/songs', {
+            params: {
+                limit: 4
+            }
+        })
+            .then(function (response) {
+                let data = response.data;
+                that.hot_song = data.map(formatSong)
+            })
+            .catch(function (error) {
+                console.log("获取热门歌曲失败");
+            });
     }
 })
 
 function formatPlaylists(playlist) {
-    let playlist_f={
-        id:playlist.id,
-        title:playlist.name,
-        img_url:playlist.photo,
-        num:playlist.num,
-        create_date:creat_time
+    let playlist_f = {
+        id: playlist.id,
+        title: playlist.name,
+        img_url: playlist.photo,
+        num: playlist.num,
+        create_date: creat_time
     }
     return playlist_f
 }
@@ -311,21 +373,31 @@ function formatAlbums(album) {
     let album_f = {
         id: album.id,
         title: album.name,
-        singer:{
-            id:album.singer_id,
-            name:album.singer_name
+        singer: {
+            id: album.singer_id,
+            name: album.singer_name
         },
-        img_url:album.photo
+        img_url: album.photo
     }
     return album_f
 }
+
 function formatSinger(singer) {
-    let singer_f={
-        id:singer.id,
-        name:singer.name,
-        info:singer.introduction,
-        img_url:singer.photo
+    let singer_f = {
+        id: singer.id,
+        name: singer.name,
+        info: singer.introduction,
+        img_url: singer.photo
     }
     return singer_f
+}
+function formatSong(song) {
+    let song_f = {
+        id: song.id,
+        title: song.name,
+        singer: song.singer,
+        img_url: song.photo
+    }
+    return song_f
 }
 
