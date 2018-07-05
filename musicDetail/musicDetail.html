@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>带音乐平台</title>
     <!--引入musicplay.css-->
-    <link rel="stylesheet" href="./musicplay.css">
+    <link rel="stylesheet" href="musiDetail.css">
 
     <!--引入vue-->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -16,6 +16,101 @@
 </head>
 <body>
 <div id="app">
+    <div class="nav">
+        <el-menu :default-active="menu_active_index" mode="horizontal" @select="" text-color="#ffffff"
+                 background-color="#333" active-text-color="#ffffff">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <div>带音乐平台</div>
+                </div>
+
+                <el-menu-item index="1" class="nav-item">发现音乐</el-menu-item>
+                <el-menu-item index="2" class="nav-item">我的音乐</el-menu-item>
+                <el-menu-item index="3" class="nav-item" disabled>朋友</el-menu-item>
+                <el-menu-item index="4" class="nav-item" disabled>商城</el-menu-item>
+                <el-menu-item index="5" class="nav-item" disabled>音乐人 </el-menu-item>
+                <el-menu-item index="6" class="nav-item" disabled>下载客户端</el-menu-item>
+                <el-input class="search"
+                          placeholder="搜索"
+                          v-on:keyup.enter.native="search"
+                          prefix-icon="el-icon-search"
+                          v-model="search_wd"size="medium">
+                </el-input>
+                <div class="log">
+                    <div class="user" v-if="user!=null">
+                        <img v-bind:src="user.img_url" style="height: 30px;width: 30px;border-radius: 15px;margin-right: 10px" alt="icon" >
+                        <el-dropdown @command="handleCommand">
+                                <span class="el-dropdown-link" style="color: #ffffff;">
+                                {{user.name}}<i class="el-icon-arrow-down el-icon--right"></i>
+                                </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item command="homepage">我的主页</el-dropdown-item>
+                                <el-dropdown-item disabled>我的消息</el-dropdown-item>
+                                <el-dropdown-item disabled>个人设置</el-dropdown-item>
+                                <el-dropdown-item divided command="logout"><i class="el-icon-delete"></i> 登出 </el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </div>
+                    <div class="log-or-register" v-else>
+                        <a href="#" @click="loginFormVisible = true">登录</a>
+                        <a href="#" @click="registerFormVisible = true">注册</a>
+                    </div>
+
+                </div>
+            </div>
+            <!--login Form -->
+            <el-dialog title="登录" :visible.sync="loginFormVisible" width="320px" >
+                <el-form :model="login_form">
+                    <el-form-item >
+                        <el-input placeholder="账号" v-model="login_form.account" auto-complete="off" suffix-icon="el-icon-success"></el-input>
+                    </el-form-item>
+                    <el-form-item >
+                        <el-input placeholder="密码" v-model="login_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <div class="forget-password">
+                        <a href="#">忘记密码？</a>
+                    </div>
+                    <el-button class="login-button" type="primary" @click="login">登录</el-button>
+                    <div >
+                        <a href="#" class="to-register" @click="toRegisterORLogin('Register')">注册</a>
+                    </div>
+                </div>
+            </el-dialog>
+            <!--register Form -->
+            <el-dialog title="注册" :visible.sync="registerFormVisible" width="360px" v-loading="true">
+                <el-form :model="register_form">
+                    <el-form-item >
+                        <el-input placeholder="账号" v-model="register_form.account" auto-complete="off" suffix-icon="el-icon-success"></el-input>
+                    </el-form-item>
+                    <el-form-item >
+                        <el-input placeholder="密码" v-model="register_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                    </el-form-item>
+                    <el-form-item >
+                        <el-input placeholder="再输一次密码" v-model="register_form.password_repeat" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                    </el-form-item>
+                    <el-form-item >
+                        <el-input placeholder="验证码" v-model="register_form.verification_code" auto-complete="off" suffix-icon="el-icon-success"></el-input>
+                    </el-form-item>
+
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <div class="verification-code">
+                        <a href="#">发送验证码</a>
+                    </div>
+                    <el-button class="register-button" type="primary" @click="register">注册</el-button>
+                    <div>
+                        <a href="#" class="to-login" @click="toRegisterORLogin('Login')">登录</a>
+                    </div>
+                </div>
+            </el-dialog>
+
+        </el-menu>
+    </div>
     <div class="g-wrap0">
         <div class="g-wrap0_1">
             <div class="g-wrap1">
@@ -183,6 +278,6 @@
             </div>
 </div>
 
-    <script type="text/javascript" src="./musicplay.js"></script>
+    <script type="text/javascript" src="musicDetail.js"></script>
 </body>
 </html>
