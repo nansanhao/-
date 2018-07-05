@@ -320,16 +320,44 @@ new Vue({
         }
     },
     created:function () {
+        let that=this
         let type=GetQueryString("type");
+        let id=GetQueryString("id");
         if(type=="playlist"){
             this.isPlaylist=true;
         }else {
             this.isPlaylist=false;
         }
         if(this.isPlaylist){
+
             //访问后台得到playlist的数据
+            axios.get('/playlist', {
+                params: {
+                    p_id: id
+                }
+            })
+                .then(function (response) {
+                    let data = response.data;
+                    that.playlist=formatPlaylist(data);
+                })
+                .catch(function (error) {
+                    console.log("获取歌单失败");
+                });
         }else {
             //获得album的数据
+            axios.get('/album', {
+                params: {
+                    a_id: id
+                }
+            })
+                .then(function (response) {
+                    let data = response.data;
+                    that.album=formatAlbum(data);
+                    console.log("获取专辑成功");
+                })
+                .catch(function (error) {
+                    console.log("获取专辑失败");
+                });
         }
     }
 })
@@ -340,4 +368,38 @@ function GetQueryString(name)
     if(r!=null)
         return  decodeURI(r[2]);
     return null;
+}
+function formatPlaylist(playlist) {
+    let playlist_f={
+        title:playlist.playlistName,
+        play_count:playlist.song_count,
+        collect_count:511,
+        download_count:322,
+        create_date:playlist.creat_time,
+        img_url:playlist.photo,
+        introduction:"五月，会有始料不及的运气，会有突如其来的欢喜，放空的心，是最好的礼物； 独走的路，是最美的风景；好听的女声那么多，而我却偏偏喜欢你。♥这么好听的女声你确定要错过？",
+        author:{
+            name:playlist.creator_id,
+            img_url:"http://p1.music.126.net/0btwtKKf0L162zX2WKQbBQ==/109951163379831126.jpg?param=40y40"
+        },
+        tags:["欧美","流行","电子"]
+    }
+    return playlist_f;
+}
+function formatAlbum(album) {
+    let album_f={
+        title:album.albumName,
+        play_count:album.song_count,
+        collect_count:11,
+        download_count:32,
+        publish_date:album.publish_time,
+        publish_company: "环球唱片",
+        img_url:album.photo,
+        introduction:album.introduction,
+        singer:{
+            id:album.singer_id,
+            name:album.singer_name,
+        }
+    }
+    return album_f;
 }

@@ -315,6 +315,7 @@ new Vue({
             .then(function (response) {
                 let data = response.data;
                 that.albumlist = data.map(formatAlbums)
+                console.log("获取热门唱片成功");
             })
             .catch(function (error) {
                 console.log("获取热门唱片失败");
@@ -327,6 +328,7 @@ new Vue({
             .then(function (response) {
                 let data = response.data;
                 that.hot_singer = data.map(formatSinger)
+                console.log("获取热门歌手成功");
             })
             .catch(function (error) {
                 console.log("获取热门歌手失败");
@@ -339,6 +341,7 @@ new Vue({
             .then(function (response) {
                 let data = response.data;
                 that.hot_playlist = data.map(formatPlaylists)
+                console.log("获取热门歌单成功");
             })
             .catch(function (error) {
                 console.log("获取热门歌单失败");
@@ -351,6 +354,7 @@ new Vue({
             .then(function (response) {
                 let data = response.data;
                 that.hot_song = data.map(formatSong)
+                console.log("获取热门歌曲成功");
             })
             .catch(function (error) {
                 console.log("获取热门歌曲失败");
