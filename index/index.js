@@ -48,8 +48,8 @@ new Vue({
         hot_playlist: [
             {
                 id: "1",
-                title: "华语|有颗星降落在我眼睛",
-                img_url: "http://p1.music.126.net/26LPymJM-Jff9K9UVXhxSQ==/18996262393662264.jpg?param=140y140",
+                title: "韵律中邂逅惊艳女嗓，美到心醉",
+                img_url: "http://p3.music.126.net/2-04ThxCahYBMbkXzFHwfw==/19161189137853511.jpg?param=200y200",
                 num: "235416",
                 create_date: "2018-06-27 17:12"
             },
@@ -106,12 +106,12 @@ new Vue({
         hot_albumlist: [
             {
                 id: "1",
-                title: "EVERYTHING IS LOVE",
+                title: "渐渐",
                 singer: {
                     id: 1,
-                    name: "The Carters / Beyoncé / Jay-Z"
+                    name: "陈奕迅"
                 },
-                img_url: "http://p3.music.126.net/WcVJXehoHv1_b0GyWFCjmA==/109951163365318229.jpg?param=100y100"
+                img_url: "http://p1.music.126.net/SGRNxyeA6_43M8oB0TuqrQ==/109951163370531309.jpg?param=130y130"
             },
             {
                 id: "2",
