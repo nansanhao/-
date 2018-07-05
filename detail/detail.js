@@ -56,89 +56,129 @@ new Vue({
         },
         songs:[
             {
+                id:2,
                 title:"Safe ",
                 duration:"03:20",
                 album:{
-                    id:'1',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Daya"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },
             {
+                id:2,
                 title:"Only You",
                 duration:"03:09",
                 album:{
-                    id:'2',
-                    name:"Only You"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Cheat Codes"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"You",
                 duration:"03:20",
                 album:{
-                    id:'3',
-                    name:"Odyssey"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Matlda"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Need You Right Now",
                 duration:"03:25",
                 album:{
-                    id:'4',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Hedegaard"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Cruel",
                 duration:"03:31",
                 album:{
-                    id:'5',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Tobu"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Horizon",
                 duration:"03:00",
                 album:{
-                    id:'6',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Kill The Noise"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Your Place or Mine",
                 duration:"03:14",
                 album:{
-                    id:'7',
-                    name:"Your Place or Mine"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Zay"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },
             {
+                id:2,
                 title:"California",
                 duration:"03:20",
                 album:{
-                    id:'8',
-                    name:"California"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Hot Shade"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             }
             ,{
+                id:2,
                 title:"Big Words",
                 duration:"03:16",
                 album:{
-                    id:'9',
-                    name:"Big Words"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Klaas"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             }
             ,{
+                id:2,
                 title:"Because Of You",
                 duration:"04:01",
                 album:{
-                    id:'10',
-                    name:"Because Of You"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Steve Void"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             }
         ],
         comments:[

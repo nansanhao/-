@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="detail.css">
 </head>
@@ -222,7 +224,7 @@
                                 label="歌曲名"
                                 width="180">
                             <template slot-scope="scope">
-                                <a href="#">{{scope.row.title}}</a>
+                                <a v-bind:href="'../musicDetail/musicDetail.html?id='+scope.row.id">{{scope.row.title}}</a>
                             </template>
                         </el-table-column>
                         <el-table-column
@@ -240,7 +242,7 @@
                         <el-table-column
                                 label="歌手">
                             <template slot-scope="scope">
-                                <a href="#">{{scope.row.singer}}</a>
+                                <a v-bind:href="'../singerDetail/singerDetail.html?id='+scope.row.singer.id">{{scope.row.singer.name}}</a>
                             </template>
                         </el-table-column>
                     </el-table>
