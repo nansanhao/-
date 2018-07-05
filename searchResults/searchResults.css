@@ -109,11 +109,16 @@ a:hover{
     align-items: center;
 }
 .nav-logo{
-    font-size: 24px;
     width: 160px;
-    color: white;
     display: flex;
     align-items: center;
+}
+.nav-logo>a{
+    font-size: 24px;
+    color: white;
+}
+.nav-logo>a:hover{
+    text-decoration: none;
 }
 .nav-item{
     font-size: 14px;

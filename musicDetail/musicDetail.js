@@ -124,11 +124,20 @@ new Vue({
         menu_active_index: '1'
     },
     created:function () {
+        let that = this
+        if(user=JSON.parse(sessionStorage.getItem("bigmusic_user"))){
+            console.log(user)
+            that.user = {
+                id: user.id,
+                name: user.account,
+                img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50"
+            };
+        }
         let type=GetQueryString("type");
         if(type=="playlist"){
-            this.isPlaylist=true;
+            that.isPlaylist=true;
         }else {
-            this.isPlaylist=false;
+            that.isPlaylist=false;
         }
     },
     methods:{
@@ -139,21 +148,38 @@ new Vue({
         login: function () {
             let that = this
             //TODO 发送请求后台如果密码正确
-            let res = "no";
-            if (res == "ok") {
+            let bigMusic = JSON.parse(localStorage.getItem("bigmusic")) || [];
+            let res, user;
+            for (let i = 0; i < bigMusic.length; i++) {
+                if (bigMusic[i].account == this.login_form.account &&
+                    bigMusic[i].password == this.login_form.password) {
+                    res = "yes"
+                    user = bigMusic[i]
+                } else {
+                    res = "no"
+                }
+            }
+
+            if (res == "yes") {
                 that.loginFormVisible = false;
-                this.user = {
-                    id: "1",
-                    name: "南三号",
+                that.user = {
+                    id: user.id,
+                    name: user.account,
                     img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50"
                 };
-                setTimeout(function () {
-                    that.$message({
-                        message: '登录成功！',
-                        type: 'success',
-                        duration: 2000
-                    });
-                }, 100)
+                sessionStorage.setItem('bigmusic_user',JSON.stringify(user))
+                that.login_form= {
+                    account: '',
+                    password: ''
+                }
+                registerFormVisible: false,
+                    setTimeout(function () {
+                        that.$message({
+                            message: '登录成功！',
+                            type: 'success',
+                            duration: 2000
+                        });
+                    }, 100)
             } else {
                 setTimeout(function () {
                     that.$message({
@@ -168,15 +194,25 @@ new Vue({
         register: function () {
             let that = this
             if (that.register_form.password == that.register_form.password_repeat) {
+                let bigMusic = JSON.parse(localStorage.getItem("bigmusic")) || [];
                 let user = {
+                    id: bigMusic.length + 1,
                     account: that.register_form.account,
                     password: that.register_form.password,
                     verification_code: that.register_form.verification_code
                 }
+                bigMusic.push(user)
                 //TODO 提交到后台
+                localStorage.setItem('bigmusic', JSON.stringify(bigMusic));
 
                 //成功
                 that.registerFormVisible = false;
+                that.register_form = {
+                    account: "",
+                    password: "",
+                    password_repeat: "",
+                    verification_code: ""
+                }
                 setTimeout(function () {
                     that.$message({
                         message: '注册成功，去登录吧！',
@@ -212,6 +248,7 @@ new Vue({
         handleCommand: function (command) {
             if (command == "logout") {
                 this.user = null;
+                sessionStorage.removeItem("bigmusic_user")
                 this.$message({
                     message: '登出成功！',
                     type: 'success',
