@@ -379,7 +379,7 @@ function formatAlbums(album) {
         title: album.name,
         singer: {
             id: album.singer_id,
-            name: album.singer_name
+            name: album.singerName
         },
         img_url: album.photo
     }
