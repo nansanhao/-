@@ -4,7 +4,8 @@ body{
 }
 #app{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
 }
 .main{
@@ -32,9 +33,9 @@ a:hover{
 .s-wrap{
     display:flex;
     justify-content: center;
-    padding: 40px 0;
+    padding: 10px 0 30px 0;
 }
-.search{
+.search_c{
     width: 300px;
 }
 
@@ -95,4 +96,127 @@ a:hover{
 .footer-link{
     margin: 20px 0 10px 0;
 
+}
+
+/* ----------------------- nav ---------------------- */
+.nav{
+    width: 100%;
+    height: 70px;
+}
+.nav-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-logo{
+    font-size: 24px;
+    width: 160px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.nav-item{
+    font-size: 14px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box
+}
+
+.el-menu-item.is-active {
+    border-bottom: 3px solid #c20c0c!important;
+    background-color: rgb(41, 41, 41)!important;
+}
+.search{
+    color: white!important;
+    width: 200px;
+    margin-left: 30px;
+}
+.search input{
+    border-radius: 20px;
+
+}
+.search input:focus{
+    border-color: transparent;
+
+}
+.log{
+    margin: 0 10px 0 10px;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+.log-or-register{
+
+}
+.log-or-register>a{
+    color: #787878;
+    text-decoration: none;
+}
+.log-or-register>a:hover{
+    color: #666;
+    text-decoration: underline;
+}
+/* ----------------------- login ---------------------- */
+.user{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.el-dialog__header{
+
+}
+.el-dialog__body{
+    border-top:1px solid #c20c0c;
+    padding: 30px 0 0 0;
+    margin: 0 20px;
+}
+.login-button,.register-button{
+    background-color: #bc070c;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.login-button{
+    width: 280px;
+}
+.register-button{
+    width: 320px;
+}
+.to-register,.to-login{
+    color: #c20c0c;
+    text-decoration: none;
+
+}
+.to-register:hover,.to-login:hover{
+    text-decoration: underline;
+}
+.dialog-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-button:hover,.register-button:hover{
+    background-color: #ec2a32;
+    border: none;
+}
+.login-button:focus,.register-button:focus{
+    background-color: #c20c0c;
+    border-color: #c20c0c;
+}
+.el-form-item__content input:focus{
+    border-color: #c20c0c;
+}
+.forget-password,.verification-code{
+    align-self:flex-end ;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.forget-password>a,.verification-code>a{
+    color: #c20c0c;
+    text-decoration: none;
+}
+.forget-password:hover,.verification-code:hover{
+    text-decoration: underline;
 }

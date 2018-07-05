@@ -295,7 +295,29 @@ let app=new Vue({
             }
         ],
         lyrics:[],
-        users:[]
+        users:[],
+        // form
+        user: {
+            id: "1",
+            name: "南三号",
+            img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50",
+        },
+        loginFormVisible: false,
+        formLabelWidth: '40px',
+        search_wd: "",
+        login_form: {
+            account: '',
+            password: '',
+        },
+        registerFormVisible: false,
+        register_form: {
+            account: "",
+            password: "",
+            password_repeat: "",
+            verification_code: ""
+        },
+        // nav
+        menu_active_index: '1'
     },
     watch:{
         current_page:function () {
@@ -311,6 +333,7 @@ let app=new Vue({
             }
 
         },
+
         handleCurrentChange:function (val) {
             let that=this;
             let current_tab=that.current_tab;
@@ -350,9 +373,100 @@ let app=new Vue({
                     break;
             }
         },
-        search:function () {
+        search_func:function () {
             //TODO 搜索
             console.log(this.search_wd)
+        },
+        search: function () {
+            console.log("搜索")
+            window.location.href = "../searchResults/searchResults.html?" + `search_wd=${this.search_wd}`
+        },
+        login: function () {
+            let that = this
+            //TODO 发送请求后台如果密码正确
+            let res = "no";
+            if (res == "ok") {
+                that.loginFormVisible = false;
+                this.user = {
+                    id: "1",
+                    name: "南三号",
+                    img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50"
+                };
+                setTimeout(function () {
+                    that.$message({
+                        message: '登录成功！',
+                        type: 'success',
+                        duration: 2000
+                    });
+                }, 100)
+            } else {
+                setTimeout(function () {
+                    that.$message({
+                        message: '账户或密码错误！请重新输入。',
+                        type: 'error',
+                        duration: 2000
+                    });
+                }, 100)
+            }
+
+        },
+        register: function () {
+            let that = this
+            if (that.register_form.password == that.register_form.password_repeat) {
+                let user = {
+                    account: that.register_form.account,
+                    password: that.register_form.password,
+                    verification_code: that.register_form.verification_code
+                }
+                //TODO 提交到后台
+
+                //成功
+                that.registerFormVisible = false;
+                setTimeout(function () {
+                    that.$message({
+                        message: '注册成功，去登录吧！',
+                        type: 'success',
+                        duration: 2000
+                    });
+                }, 100)
+            } else {
+                that.$message({
+                    message: '错误！前后两次密码输入不同。',
+                    type: 'error',
+                    duration: 2000
+                });
+            }
+
+
+        },
+        toRegisterORLogin: function (type) {
+            let that = this;
+            if (type == "Login") {
+                that.registerFormVisible = false;
+                setTimeout(function () {
+                    that.loginFormVisible = true;
+                }, 200)
+            }
+            else if (type == "Register") {
+                that.loginFormVisible = false;
+                setTimeout(function () {
+                    that.registerFormVisible = true;
+                }, 200)
+            }
+        },
+        handleCommand: function (command) {
+            if (command == "logout") {
+                this.user = null;
+                this.$message({
+                    message: '登出成功！',
+                    type: 'success',
+                    duration: 1000
+                });
+            }
+            if (command == "homepage") {
+                window.location.href = "../homepage/homepage.html?type=mine&id=" + this.user.id
+            }
+
         }
 
     },
