@@ -90,7 +90,18 @@
 
 #### 搜索结果页
 
-> GET		/search?wd=&limit=&offset=		搜索
+> GET		/search?wd=&type=&limit=&offset=		搜索
+>
+> ```js
+> //type:song
+> {
+>     song_total:"",
+>     songs:[]
+> }
+> //type:album
+> //type:playlist
+> //type:singer
+> ```
 
 #### 专辑详情页
 
