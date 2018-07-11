@@ -2,15 +2,19 @@
 
 #### 开发人员：
 
-前端：蔡寒均，江家喜
+前端：蔡寒均，江家喜，王啸川
 
-后台：陈霁璇，肖志强，王啸川，张子琦
+后台：陈霁璇，肖志强，张子琦
 
 #### 技术栈：
 
-前端：Vue＋Vue router+restful API
+前端：Vue＋elementUI+axios+restful API
 
-后台：
+后台：MySQL+Tomcat+Servlet+Python爬虫
+
+语言：Html+Css+JavaScript+Java+python
+
+工具：Chrome+Idea＋postman+WebStorm+Navicat
 
 ## 一、项目需求
 
@@ -62,11 +66,182 @@
 ## 二、数据库设计
 
 - 用户表
+
+  >**`user`**  {
+  >
+  >  		`user_id`		int(8),
+  >
+  > 		 `account`		varchar(20),
+  >
+  > 		 `password`		 varchar(20),
+  >
+  > 		 `email`		varchar(64),
+  >
+  > 		 `photo`		varchar(255),
+  >
+  > 		 `listen_time`		int(8),
+  >
+  > 		 `register_time` 		datetime(0),
+  >
+  > 		 `user_name`		 varchar(255),
+  >
+  > 		 `location` 		varchar(255),
+  >
+  >  		PRIMARY KEY (`userId`)
+  >
+  >}
+
 - 歌曲表
+
+  >**`song`**  {
+  >
+  >  		`song_id` 		int(11) 
+  >
+  >  		`song_name`		 varchar(255),
+  >
+  >  		`singer_id`		 int(11),
+  >
+  >  		`punish_time` 		varchar(100),
+  >
+  >  		`song_url` 		varchar(255) ,
+  >
+  >  		`play_list_id`		 int(11),
+  >
+  >  		`album_id` 		int(11),
+  >
+  >  		`fire` 		varchar(255),
+  >
+  >  		`photo` 		varchar(255),
+  >
+  >  		`lyric`		 longtext,
+  >
+  >  		`album_name` 		varchar(255),
+  >
+  >  		`singer_name` 		varchar(255),
+  >
+  >  		PRIMARY KEY (`song_id`) 
+  >
+  >} 
+
 - 歌单表
+
+  >**`play_list`**  {
+  >
+  > 		 `playlistId` 			int(11) 
+  >
+  > 		 `playlist_name`,
+  >
+  >   	    	 `photo` 		varchar(255),
+  >
+  > 		 `creat_time` 			datetime(0),
+  >
+  >  		 `song_count`		 	varchar(255),
+  >
+  > 		 `introduction`		varchar(255)  
+  >
+  >​		 `creator_id` 		int(11),
+  >
+  > 		 `num` 		int(11),
+  >
+  >  		 `fire` 		int(11),
+  >
+  > 		 PRIMARY KEY (`playlistId`)
+  >
+  >}
+
+  
+
 - 专辑表
-- 歌曲标签表
+
+  >**`album`**  {
+  >
+  >  		`albumId` 		int(11),
+  >
+  > 		`album_name` 		varchar(200),
+  >
+  >​	  	  `photo` 		varchar(255),
+  >
+  >  		`publish_time` 		varchar(255),,
+  >
+  >  		`song_count` 			int(8),
+  >
+  >  		`introduction` 		varchar(2000),
+  >
+  > 		`singer_id` 		int(11),
+  >
+  > 		`singer_name` 		varchar(255),
+  >
+  >  		`fire` 		int(11),
+  >
+  >  		PRIMARY KEY (`album_id`)
+  >
+  >}
+
+- 歌手表
+
+  >**`singer`**  {
+  >
+  >  		`singer_id` 		int(11),
+  >
+  >  		`singer_name` 		varchar(20),
+  >
+  >  		`photo` 		varchar(255),
+  >
+  >  		`birthday` 		datetime(0),
+  >
+  >  		`song_count` 		int(8)
+  >
+  >  		`album_count` 		int(8),
+  >
+  >  		`mv_count` 		int(8),
+  >
+  >  		`introduction` 		varchar(2000),
+  >
+  >  		`fire` 		int(11),
+  >
+  >  		`big_photo` 		varchar(255),
+  >
+  >  		PRIMARY KEY (`singer_id`)
+  >
+  >}
+
 - 评论表
+
+  >**`comment`**  {
+  >
+  >  		`cmmentId` 		int(11),
+  >
+  >  		`comment` 		varchar(255),
+  >
+  >  		`date` 		varchar(200),
+  >
+  >  		`like_count` 		int(8),
+  >
+  >  		`username_id` 		int(11) ,
+  >
+  >  		`music_id` 		int(11),
+  >
+  >  		PRIMARY KEY (`cmmentId`),
+  >
+  >  		INDEX `username_id`(`username_id`),
+  >
+  >  		INDEX ` music_id`(`music_id`)
+  >
+  >}
+
+- 标签表
+
+  >**`tag`**  {
+  >
+  >  		`id` 		int(11),
+  >
+  >  		`tag` 		varchar(20),
+  >
+  >  		PRIMARY KEY (`id`) 
+  >
+  >}
+
+  
 
 ## 三、API接口设计
 
@@ -76,7 +251,6 @@
 
 - ?limit=10：指定返回记录的数量
 - ?offset=10：指定返回记录的开始位置
-- /:id：指定内容的id
 
 #### 主页
 
