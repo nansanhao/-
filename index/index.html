@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="./index.css">
 </head>
@@ -23,7 +25,7 @@
                 background-color="#333" active-text-color="#ffffff">
                 <div class="nav-content">
                     <div class="nav-logo">
-                        <div>带音乐平台</div>
+                        <a href="../index/index.html">带音乐平台</a>
                     </div>
 
                     <el-menu-item index="1" class="nav-item">发现音乐</el-menu-item>
@@ -164,7 +166,11 @@
                                         </a>
 
                                     </div>
-                                    <div class="item-singer">{{fomatString(item.singer,12)}}</div>
+                                    <div class="item-singer">
+                                        <a v-bind:href="'../singerDetail/singerDetail.html?id='+item.id">
+                                            {{fomatString(item.singer.name,12)}}
+                                        </a>
+                                    </div>
                                 </div>
                             </el-card>
                         </div>
@@ -177,7 +183,7 @@
                     <div class="hot-singer-content">
                         <div class="singer-item" v-for="singer in hot_singer">
                             <div class="singer-img">
-                                <img v-bind:src="singer.image_url" style="width: 62px;height: 62px;" alt="">
+                                <img v-bind:src="singer.img_url" style="width: 62px;height: 62px;" alt="">
                             </div>
                             <div class="singer-info-wrap">
                                 <div class="singer-name">{{singer.name}}</div>
@@ -188,15 +194,15 @@
                     </div>
                 </div>
                 <div class="hot-singer">
-                    <h4><i class="el-icon-arrow-right"></i>歌手排行榜</h4>
+                    <h4><i class="el-icon-arrow-right"></i>歌曲排行榜</h4>
                     <div class="hot-singer-content">
-                        <div class="singer-item" v-for="singer in hot_singer">
+                        <div class="singer-item" v-for="song in hot_song">
                             <div class="singer-img">
-                                <img v-bind:src="singer.image_url" style="width: 62px;height: 62px;" alt="">
+                                <img v-bind:src="song.img_url" style="width: 62px;height: 62px;" alt="">
                             </div>
                             <div class="singer-info-wrap">
-                                <div class="singer-name">{{singer.name}}</div>
-                                <div class="singer-info">{{fomatString(singer.info,16)}}</div>
+                                <div class="singer-name">{{song.title}}</div>
+                                <div class="singer-info">{{fomatString(song.singer,16)}}</div>
                             </div>
 
                         </div>

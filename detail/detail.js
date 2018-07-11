@@ -1,6 +1,29 @@
 new Vue({
     el:"#app",
-    data:{
+    data:{// form
+        user: {
+            id: "1",
+            name: "南三号",
+            img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50",
+        },
+        loginFormVisible: false,
+        formLabelWidth: '40px',
+        search_wd: "",
+        login_form: {
+            account: '',
+            password: '',
+        },
+        registerFormVisible: false,
+        register_form: {
+            account: "",
+            password: "",
+            password_repeat: "",
+            verification_code: ""
+        },
+        // nav
+        menu_active_index: '1',
+
+
         isPlaylist:true,
         comment_textarea:"",
         playlist:{
@@ -33,89 +56,129 @@ new Vue({
         },
         songs:[
             {
+                id:2,
                 title:"Safe ",
                 duration:"03:20",
                 album:{
-                    id:'1',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Daya"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },
             {
+                id:2,
                 title:"Only You",
                 duration:"03:09",
                 album:{
-                    id:'2',
-                    name:"Only You"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Cheat Codes"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"You",
                 duration:"03:20",
                 album:{
-                    id:'3',
-                    name:"Odyssey"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Matlda"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Need You Right Now",
                 duration:"03:25",
                 album:{
-                    id:'4',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Hedegaard"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Cruel",
                 duration:"03:31",
                 album:{
-                    id:'5',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Tobu"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Horizon",
                 duration:"03:00",
                 album:{
-                    id:'6',
+                    id:"1",
                     name:"Safe"
                 },
-                singer:"Kill The Noise"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },{
+                id:2,
                 title:"Your Place or Mine",
                 duration:"03:14",
                 album:{
-                    id:'7',
-                    name:"Your Place or Mine"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Zay"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             },
             {
+                id:2,
                 title:"California",
                 duration:"03:20",
                 album:{
-                    id:'8',
-                    name:"California"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Hot Shade"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             }
             ,{
+                id:2,
                 title:"Big Words",
                 duration:"03:16",
                 album:{
-                    id:'9',
-                    name:"Big Words"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Klaas"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             }
             ,{
+                id:2,
                 title:"Because Of You",
                 duration:"04:01",
                 album:{
-                    id:'10',
-                    name:"Because Of You"
+                    id:"1",
+                    name:"Safe"
                 },
-                singer:"Steve Void"
+                singer:{
+                    id:1,
+                    name:"Daya"
+                }
             }
         ],
         comments:[
@@ -203,12 +266,175 @@ new Vue({
             }
         ]
     },
+    methods:{
+        search: function () {
+            console.log("搜索")
+            window.location.href = "../searchResults/searchResults.html?" + `search_wd=${this.search_wd}`
+        },
+        login: function () {
+            let that = this
+            //TODO 发送请求后台如果密码正确
+            let bigMusic = JSON.parse(localStorage.getItem("bigmusic")) || [];
+            let res, user;
+            for (let i = 0; i < bigMusic.length; i++) {
+                if (bigMusic[i].account == this.login_form.account &&
+                    bigMusic[i].password == this.login_form.password) {
+                    res = "yes"
+                    user = bigMusic[i]
+                } else {
+                    res = "no"
+                }
+            }
+
+            if (res == "yes") {
+                that.loginFormVisible = false;
+                that.user = {
+                    id: user.id,
+                    name: user.account,
+                    img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50"
+                };
+                sessionStorage.setItem('bigmusic_user',JSON.stringify(user))
+                that.login_form= {
+                    account: '',
+                    password: ''
+                }
+                registerFormVisible: false,
+                    setTimeout(function () {
+                        that.$message({
+                            message: '登录成功！',
+                            type: 'success',
+                            duration: 2000
+                        });
+                    }, 100)
+            } else {
+                setTimeout(function () {
+                    that.$message({
+                        message: '账户或密码错误！请重新输入。',
+                        type: 'error',
+                        duration: 2000
+                    });
+                }, 100)
+            }
+
+        },
+        register: function () {
+            let that = this
+            if (that.register_form.password == that.register_form.password_repeat) {
+                let bigMusic = JSON.parse(localStorage.getItem("bigmusic")) || [];
+                let user = {
+                    id: bigMusic.length + 1,
+                    account: that.register_form.account,
+                    password: that.register_form.password,
+                    verification_code: that.register_form.verification_code
+                }
+                bigMusic.push(user)
+                //TODO 提交到后台
+                localStorage.setItem('bigmusic', JSON.stringify(bigMusic));
+
+                //成功
+                that.registerFormVisible = false;
+                that.register_form = {
+                    account: "",
+                    password: "",
+                    password_repeat: "",
+                    verification_code: ""
+                }
+                setTimeout(function () {
+                    that.$message({
+                        message: '注册成功，去登录吧！',
+                        type: 'success',
+                        duration: 2000
+                    });
+                }, 100)
+            } else {
+                that.$message({
+                    message: '错误！前后两次密码输入不同。',
+                    type: 'error',
+                    duration: 2000
+                });
+            }
+
+
+        },
+        toRegisterORLogin: function (type) {
+            let that = this;
+            if (type == "Login") {
+                that.registerFormVisible = false;
+                setTimeout(function () {
+                    that.loginFormVisible = true;
+                }, 200)
+            }
+            else if (type == "Register") {
+                that.loginFormVisible = false;
+                setTimeout(function () {
+                    that.registerFormVisible = true;
+                }, 200)
+            }
+        },
+        handleCommand: function (command) {
+            if (command == "logout") {
+                this.user = null;
+                sessionStorage.removeItem("bigmusic_user")
+                this.$message({
+                    message: '登出成功！',
+                    type: 'success',
+                    duration: 1000
+                });
+            }
+            if (command == "homepage") {
+                window.location.href = "../homepage/homepage.html?type=mine&id=" + this.user.id
+            }
+
+        }
+    },
     created:function () {
+        let that = this
+        if(user=JSON.parse(sessionStorage.getItem("bigmusic_user"))){
+            console.log(user)
+            that.user = {
+                id: user.id,
+                name: user.account,
+                img_url: "http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50"
+            };
+        }
+
         let type=GetQueryString("type");
+        let id=GetQueryString("id");
         if(type=="playlist"){
             this.isPlaylist=true;
         }else {
             this.isPlaylist=false;
+        }
+        if(this.isPlaylist){
+
+            //访问后台得到playlist的数据
+            axios.get('/playlist', {
+                params: {
+                    p_id: id
+                }
+            })
+                .then(function (response) {
+                    let data = response.data;
+                    that.playlist=formatPlaylist(data);
+                })
+                .catch(function (error) {
+                    console.log("获取歌单失败");
+                });
+        }else {
+            //获得album的数据
+            axios.get('/album', {
+                params: {
+                    a_id: id
+                }
+            })
+                .then(function (response) {
+                    let data = response.data;
+                    that.album=formatAlbum(data);
+                    console.log("获取专辑成功");
+                })
+                .catch(function (error) {
+                    console.log("获取专辑失败");
+                });
         }
     }
 })
@@ -219,4 +445,38 @@ function GetQueryString(name)
     if(r!=null)
         return  decodeURI(r[2]);
     return null;
+}
+function formatPlaylist(playlist) {
+    let playlist_f={
+        title:playlist.playlistName,
+        play_count:playlist.song_count,
+        collect_count:511,
+        download_count:322,
+        create_date:playlist.creat_time,
+        img_url:playlist.photo,
+        introduction:"五月，会有始料不及的运气，会有突如其来的欢喜，放空的心，是最好的礼物； 独走的路，是最美的风景；好听的女声那么多，而我却偏偏喜欢你。♥这么好听的女声你确定要错过？",
+        author:{
+            name:playlist.creator_id,
+            img_url:"http://p1.music.126.net/0btwtKKf0L162zX2WKQbBQ==/109951163379831126.jpg?param=40y40"
+        },
+        tags:["欧美","流行","电子"]
+    }
+    return playlist_f;
+}
+function formatAlbum(album) {
+    let album_f={
+        title:album.albumName,
+        play_count:album.song_count,
+        collect_count:11,
+        download_count:32,
+        publish_date:album.publish_time,
+        publish_company: "环球唱片",
+        img_url:album.photo,
+        introduction:album.introduction,
+        singer:{
+            id:album.singer_id,
+            name:album.singer_name,
+        }
+    }
+    return album_f;
 }

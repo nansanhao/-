@@ -9,11 +9,108 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="detail.css">
 </head>
 <body>
     <div id="app">
+        <div class="nav">
+            <el-menu :default-active="menu_active_index" mode="horizontal" @select="" text-color="#ffffff"
+                     background-color="#333" active-text-color="#ffffff">
+                <div class="nav-content">
+                    <div class="nav-logo">
+                        <a href="../index/index.html">带音乐平台</a>
+                    </div>
+
+                    <el-menu-item index="1" class="nav-item">发现音乐</el-menu-item>
+                    <el-menu-item index="2" class="nav-item">我的音乐</el-menu-item>
+                    <el-menu-item index="3" class="nav-item" disabled>朋友</el-menu-item>
+                    <el-menu-item index="4" class="nav-item" disabled>商城</el-menu-item>
+                    <el-menu-item index="5" class="nav-item" disabled>音乐人 </el-menu-item>
+                    <el-menu-item index="6" class="nav-item" disabled>下载客户端</el-menu-item>
+                    <el-input class="search"
+                              placeholder="搜索"
+                              v-on:keyup.enter.native="search"
+                              prefix-icon="el-icon-search"
+                              v-model="search_wd"size="medium">
+                    </el-input>
+                    <div class="log">
+                        <div class="user" v-if="user!=null">
+                            <img v-bind:src="user.img_url" style="height: 30px;width: 30px;border-radius: 15px;margin-right: 10px" alt="icon" >
+                            <el-dropdown @command="handleCommand">
+                                <span class="el-dropdown-link" style="color: #ffffff;">
+                                {{user.name}}<i class="el-icon-arrow-down el-icon--right"></i>
+                                </span>
+                                <el-dropdown-menu slot="dropdown">
+                                    <el-dropdown-item command="homepage">我的主页</el-dropdown-item>
+                                    <el-dropdown-item disabled>我的消息</el-dropdown-item>
+                                    <el-dropdown-item disabled>个人设置</el-dropdown-item>
+                                    <el-dropdown-item divided command="logout"><i class="el-icon-delete"></i> 登出 </el-dropdown-item>
+                                </el-dropdown-menu>
+                            </el-dropdown>
+                        </div>
+                        <div class="log-or-register" v-else>
+                            <a href="#" @click="loginFormVisible = true">登录</a>
+                            <a href="#" @click="registerFormVisible = true">注册</a>
+                        </div>
+
+                    </div>
+                </div>
+                <!--login Form -->
+                <el-dialog title="登录" :visible.sync="loginFormVisible" width="320px" >
+                    <el-form :model="login_form">
+                        <el-form-item >
+                            <el-input placeholder="账号" v-model="login_form.account" auto-complete="off" suffix-icon="el-icon-success"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="密码" v-model="login_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                        </el-form-item>
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <div class="forget-password">
+                            <a href="#">忘记密码？</a>
+                        </div>
+                        <el-button class="login-button" type="primary" @click="login">登录</el-button>
+                        <div >
+                            <a href="#" class="to-register" @click="toRegisterORLogin('Register')">注册</a>
+                        </div>
+                    </div>
+                </el-dialog>
+                <!--register Form -->
+                <el-dialog title="注册" :visible.sync="registerFormVisible" width="360px" v-loading="true">
+                    <el-form :model="register_form">
+                        <el-form-item >
+                            <el-input placeholder="账号" v-model="register_form.account" auto-complete="off" suffix-icon="el-icon-success"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="密码" v-model="register_form.password" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="再输一次密码" v-model="register_form.password_repeat" type="password" auto-complete="off" suffix-icon="el-icon-success
+"></el-input>
+                        </el-form-item>
+                        <el-form-item >
+                            <el-input placeholder="验证码" v-model="register_form.verification_code" auto-complete="off" suffix-icon="el-icon-success"></el-input>
+                        </el-form-item>
+
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <div class="verification-code">
+                            <a href="#">发送验证码</a>
+                        </div>
+                        <el-button class="register-button" type="primary" @click="register">注册</el-button>
+                        <div>
+                            <a href="#" class="to-login" @click="toRegisterORLogin('Login')">登录</a>
+                        </div>
+                    </div>
+                </el-dialog>
+
+            </el-menu>
+        </div>
         <div class="main-wrap">
             <div class="main">
                 <div class="section" v-if="isPlaylist">
@@ -57,44 +154,47 @@
                         </div>
                     </div>
                 </div>
-                <div class="section" v-else>
-                    <el-card body-style="padding:6px" class="playlist-img-wrap">
-                        <img v-bind:src="album.img_url" class="playlist-img">
-                    </el-card>
-                    <div class="playlist-content">
-                        <div class="playlist-title">
-                            <img src="../img/albumTag.png" style="width: 64px;height: 26px;" alt="">
-                            <div>{{album.title}} </div>
-                        </div>
-                        <div class="album-singer">
-                            <div class="album-singer-name">
-                                歌手：
-                                {{album.singer.name}}
+                <div v-else>
+                    <div class="section" >
+                        <el-card body-style="padding:6px" class="playlist-img-wrap">
+                            <img v-bind:src="album.img_url" class="playlist-img">
+                        </el-card>
+                        <div class="playlist-content">
+                            <div class="playlist-title">
+                                <img src="../img/albumTag.png" style="width: 64px;height: 26px;" alt="">
+                                <div>{{album.title}} </div>
                             </div>
-                            <div class="album-publish-time">
-                                发行时间：{{album.publish_date}}
+                            <div class="album-singer">
+                                <div class="album-singer-name">
+                                    歌手：
+                                    {{album.singer.name}}
+                                </div>
+                                <div class="album-publish-time">
+                                    发行时间：{{album.publish_date}}
+                                </div>
+                                <div class="album-publish-company">
+                                    发行公司：{{album.publish_company}}
+                                </div>
                             </div>
-                            <div class="album-publish-company">
-                                发行公司：{{album.publish_company}}
-                            </div>
-                        </div>
 
-                        <div class="playlist-btn-wrap">
-                            <el-button type="primary" round icon="el-icon-caret-right">播放</el-button>
-                            <el-button  round icon="el-icon-service">{{album.play_count}}</el-button>
-                            <el-button  round icon="el-icon-star-off">{{album.collect_count}}</el-button>
-                            <el-button  round icon="el-icon-download">{{album.download_count}}</el-button>
+                            <div class="playlist-btn-wrap">
+                                <el-button type="primary" round icon="el-icon-caret-right">播放</el-button>
+                                <el-button  round icon="el-icon-service">{{album.play_count}}</el-button>
+                                <el-button  round icon="el-icon-star-off">{{album.collect_count}}</el-button>
+                                <el-button  round icon="el-icon-download">{{album.download_count}}</el-button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="album-introduction">
-                    <div class="album-info-title">
-                        专辑介绍：
+                    <div class="album-introduction" >
+                        <div class="album-info-title">
+                            专辑介绍：
+                        </div>
+                        <p class="album-info-content">
+                            {{album.introduction}}
+                        </p>
                     </div>
-                    <p class="album-info-content">
-                        {{album.introduction}}
-                    </p>
                 </div>
+
                 <div class="songs">
                     <div class="songs-title">
                         <h3>
@@ -124,7 +224,7 @@
                                 label="歌曲名"
                                 width="180">
                             <template slot-scope="scope">
-                                <a href="#">{{scope.row.title}}</a>
+                                <a v-bind:href="'../musicDetail/musicDetail.html?id='+scope.row.id">{{scope.row.title}}</a>
                             </template>
                         </el-table-column>
                         <el-table-column
@@ -142,7 +242,7 @@
                         <el-table-column
                                 label="歌手">
                             <template slot-scope="scope">
-                                <a href="#">{{scope.row.singer}}</a>
+                                <a v-bind:href="'../singerDetail/singerDetail.html?id='+scope.row.singer.id">{{scope.row.singer.name}}</a>
                             </template>
                         </el-table-column>
                     </el-table>

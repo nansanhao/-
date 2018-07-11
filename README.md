@@ -8,7 +8,11 @@
 
 #### 技术栈：
 
+<<<<<<< HEAD
 前端：Vue＋elementUI+axios+restful API
+=======
+前端：Vue＋ElementUI+restful API
+>>>>>>> 191ea7c634bd0bf0e5795c089f9a61a6c19c0b4a
 
 后台：MySQL+Tomcat+Servlet+Python爬虫
 
@@ -256,7 +260,7 @@
 
 > GET		/hot/albums?limit=		获得热门专辑		
 >
-> GET		/hot/playlist?limit=		获得热门歌单
+> GET		/hot/playlists?limit=		获得热门歌单
 >
 > GET		/hot/songs?limit=		获得热门歌曲
 >
@@ -264,47 +268,144 @@
 
 #### 搜索结果页
 
-> GET		/search?wd=&limit=&offset=		搜索
+> GET		/search?wd=&type=&limit=&offset=		搜索
+>
+> ```js
+> //type:song
+> {
+>     song_total:"",
+>     songs:[]
+> }
+> //type:album
+> //type:playlist
+> //type:singer
+> ```
 
 #### 专辑详情页
 
-> GET		/albums/:id		获得某一张唱片的信息		
+> GET		/album?a_id=		获得某一张唱片的信息		
 >
-> GET		/albums/:id/songs?limit=&offset=		获得某一张唱片的歌曲
+> GET		/album/songs?a_id=&limit=&offset=		获得某一张唱片的歌曲
 >
-> GET		/albums/:id/comments?limit=&offset=		获得某一张唱片的评论
+> GET		/album/comments?a_id=&limit=&offset=		获得某一张唱片的评论
 
 #### 歌单详情页
 
-> GET		/playlist/:id		获得某一张歌单的信息
+> GET		/playlist?p_id=		获得某一张歌单的信息
 >
-> GET		/playlist/:id/songs?limit=&offset=		获得某一张歌单的歌曲
+> GET		/playlist/songs?p_id=&limit=&offset=		获得某一张歌单的歌曲
 >
-> GET		/playlist/:id/comments?limit=&offset=		获得某一张歌单的评论
+> GET		/playlist/comments?p_id=&limit=&offset=		获得某一张歌单的评论
 
 #### 播放页
 
-> GET		/songs/:id		获得某首歌曲
+> GET		/song/?s_id=		获得某首歌曲
 >
-> GET		/songs/:id/comments?limit=&offset=		获得某首歌曲的评论
+> GET		/song/comments?s_id=&limit=&offset=		获得某首歌曲的评论
 
 #### 登录注册
 
+> GET			/login		获取登录态
+>
 > POST		/login		登录
 >
+> ```javascript
+> //发送表单内容
+> {
+>     account:""
+>     password:""
+> }
+> //回复内容
+> //登录成功回复user信息
+> //账号正确密码错误回复'1'
+> //账号不存在回复'2'
+> ```
+>
+> 
+>
 > POST		/register			注册
+>
+> ```js
+> //发送表单内容
+> {
+>     account:"",
+>     password:"",
+> }
+> 
+> ```
+>
+> 
 
 #### 个人主页
 
-> GET		/user/:id/likes?limit=&offset=		获得用户收藏的歌曲
+> GET		/user/likes?u_id=&limit=&offset=		获得用户收藏的歌曲
 >
-> GET		/user/:id			获得某个用户的个人信息
+> GET		/user?u_id=		获得某个用户的个人信息
 
 #### 上传下载
 
 > POST		/upload		上传
 >
 > GET			/download		下载
+
+#### 评论
+
+>POST			/album/comment			评论专辑
+>
+>```js
+>//body内容
+>{
+>    a_id:"",
+>    u_id:"",
+>    content:""
+>}
+>```
+>
+>POST			/playlist/comment		评论歌单
+>
+>```js
+>//body内容
+>{
+>    p_id:"",
+>    u_id:"",
+>	content:""
+>}
+>```
+>
+>POST			/song/comment			评论歌曲
+>
+>```js
+>//body内容
+>{
+>    s_id:"",
+>    u_id:"",
+>    content:""
+>}
+>```
+
+#### 添加
+
+>POST			/user/song			添加歌曲
+>
+>```js
+>//body内容
+>{
+>    u_id:"",
+>    s_id:""
+>}
+>```
+>
+>POST			/user/playlist			添加歌单
+>
+>```js
+>//body内容
+>{
+>    u_id:"",
+>    p_id:""
+>}
+>```
+
+
 
 ## 四、前端页面设计
 - 主页

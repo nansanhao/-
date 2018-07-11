@@ -1,32 +1,141 @@
-body{
-    padding: 0;
-    margin: 0;
-}
-#app{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-}
-.main{
-    width: 982px;
-    padding: 40px;
-    border-left: 1px solid #d3d3d3;
-    border-right:1px solid #d3d3d3;
-    border-bottom:1px solid #d3d3d3;
-
-}
-.prompt{
-    font-size: 12px;
-    color: #666;
+*{
+	margin: 0px;
+	padding: 0px;
 }
 a{
-    text-decoration: none;
+	text-decoration: none;
+}
+html{
+
+}
+body{
+	background-color: white;
+}
+#app{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main_wrap{
+	border: 1px solid #D8D6D6;/*#D8D6D6*/
+	border-top: none;
+}
+.singer_info_bg{
+	float: left;
+    display: flex;
+
+}
+.singer_info{
+	padding: 16px 30px 40px 39px;
+	border-right: 1px solid #D8D6D6;
+
+
+}
+/*------aside(侧边栏)--------*/
+.other_details{
+	float: right;
+	width: 200px;
+	padding: 20px 40px 0px 30px;
+}
+.other_details .other_singers>h3{
+	margin-top: 30px;
+	margin-bottom: 5px;
+	font-size: 16px;
+	font-weight: lighter;
+}
+.other_singers_box{
+	margin-top: 15px;
+	display: flex;
+	flex-wrap: wrap;
+
+}
+.other_singers_info{
+	width: 50px;
+	/*height: 50px;*/
+}
+.other_singers_info{
+	margin:5px 8px 8px;
+}
+
+
+
+
+.singer_info_name{
+	font-weight:lighter;
+	padding: 10px 0;
+}
+.singer_info_pic{
+	display: block;
+}
+.tab{
+	margin-top: 0px;
+}
+/*--------专辑信息------*/
+.s-albumlist{
+    display: flex;
+    flex-wrap: wrap;
+}
+.album-item{
+    height: 200px;
+    width: 172px;
+    margin: 20px 9px;
+
+}
+.album-an>a{
+    font-size: 14px;
     color: black;
 }
-a:hover{
-    color: #000;
-    text-decoration: underline;
+.album-sn>p{
+	font-size: 12px;
+    color: #C3C3C3;
+}
+/*------------歌手简介------------------------*/
+.singer_introduction>i,.singer_ablum_content>i{
+	border-left:3px solid red;
+	padding-right: 5px;
+}
+.singer_introduction,.singer_ablum_content{
+	font-size: 16px;
+}
+.singer_intorduction_content{
+	line-height: 25px;
+	text-indent: 2px;
+	color: #666;
+	font-size: 12px;
+	padding-top: 5px;
+}
+.singer_ablum_content{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.ablumlist{
+	margin-left: 15px;
+}
+.ablumlist>li{
+	line-height: 25px;
+	color: #666;
+	font-size: 12px;
+}
+
+/*--------分页部分--------*/
+.pagenation{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+/* ----------------------- footer ---------------------- */
+.footer{
+    color: #999;
+    margin:80px 250px 30px 250px ;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    border-top: 1px solid #d3d3d3;
+}
+
+.footer-link{
+    margin: 20px 0 10px 0;
+
 }
 /* ----------------------- nav ---------------------- */
 .nav{
@@ -64,7 +173,7 @@ a:hover{
 }
 .search{
     color: white!important;
-    width: 200px;
+    width: 200px!important;
     margin-left: 30px;
 }
 .search input{
@@ -156,47 +265,3 @@ a:hover{
     text-decoration: underline;
 }
 
-/* ----------------------- user ---------------------- */
-.user-wrap{
-    display: flex;
-}
-.u-info{
-    margin-left: 40px;
-    flex: 1;
-}
-.u-name{
-    font-size: 22px;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
-    border-bottom: 1px solid #d3d3d3;
-}
-.u-count{
-    display: flex;
-    margin: 10px 0 20px 0;
-}
-.u-c-key{
-    font-size: 12px;
-    color: #666;
-}
-.u-c-value{
-    font-size: 24px;
-    color: #666;
-}
-.u-c-likes,.u-c-listen,.u-c-playlist{
-    margin: 10px 30px 10px 0 ;
-    padding-right: 30px;
-}
-.u-c-likes,.u-c-listen{
-    border-right: 1px solid #ddd;
-}
-.u-location{
-    font-size: 12px;
-    color: #666;
-}
-/* ----------------------- songs ---------------------- */
-.songs-title>h3{
-    border-bottom: 2px solid #c20c0c;
-    padding: 10px 0;
-
-}
