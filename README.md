@@ -8,11 +8,7 @@
 
 #### 技术栈：
 
-<<<<<<< HEAD
 前端：Vue＋elementUI+axios+restful API
-=======
-前端：Vue＋ElementUI+restful API
->>>>>>> 191ea7c634bd0bf0e5795c089f9a61a6c19c0b4a
 
 后台：MySQL+Tomcat+Servlet+Python爬虫
 
